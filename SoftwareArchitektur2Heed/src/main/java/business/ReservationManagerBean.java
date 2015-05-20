@@ -15,7 +15,7 @@ import entities.Reservation;
 @Named
 public class ReservationManagerBean {
 	
-	@PersistenceContext(unitName = "2HEED")
+	@PersistenceContext(unitName = "primary")
 	EntityManager em;
 	
 	public void addReservation(Reservation entity){
