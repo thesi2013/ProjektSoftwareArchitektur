@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/> -->
+	<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:tabMenu activeIndex="0">
+			<p:menuitem value="Neue Buchung" icon="fa fa-bed" />
+			<p:menuitem value="Buchung bearbeiten" icon="ui-icon-gear" />
+			<p:menuitem value="Historie" icon="ui-icon-script" />
+			<p:menuitem value="Anleitung" icon="ui-icon-help" />
+		</p:tabMenu>
+	</h:form>
+
+	<h1>Raumreservation für "getSelectedDate"</h1>
+	<br></br>
+
+	<h:form id="form">
+
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel for="gebaeude" value="verfügbare Gebäude:" />
+			<p:selectOneListbox id="gebaeude" value="#{selectOneMenuView.gebaeude}" style="width:250px">
+				<f:selectItem itemLabel="A" itemValue="A" />
+				<f:selectItem itemLabel="B" itemValue="B" />
+				<f:selectItem itemLabel="C" itemValue="C" />
+				<f:selectItem itemLabel="D" itemValue="D" />
+				<f:selectItem itemLabel="E" itemValue="E" />
+			</p:selectOneListbox>
+
+			<p:outputLabel for="verfRaum" value="verfügbare Räume:" />
+			<p:selectOneListbox id="verfRaum"
+				value="#{selectOneMenuView.verfRaum}" style="width:250px">
+				<f:selectItem itemLabel="A 0" itemValue="A" />
+				<f:selectItem itemLabel="A 1" itemValue="A" />
+				<f:selectItem itemLabel="A 2" itemValue="A" />
+				<f:selectItem itemLabel="A 3" itemValue="A" />
+				<f:selectItem itemLabel="A 4" itemValue="A" />
+			</p:selectOneListbox>
+		</h:panelGrid>
+
+		<br></br>
+		<br></br>
+
+		<p:outputLabel for="vorname" value="Vorname: " />
+		<p:inputText id="vorname" />
+
+		<p:outputLabel for="nachname" value="Nachname: " />
+		<p:inputText id="nachname" />
+
+		<br></br>
+		<br></br>
+
+
+		<p:growl id="message" showDetail="true" />
+
+		<p:commandButton value="Raum reservieren" actionListener="#{dialogView.resRaum}" update="message">
+			<p:confirm header="Bestätigung!" message="Wollen Sie wirklich buchen?" icon="ui-icon-blank" />
+		</p:commandButton>
+
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="300px">
+			<p:commandButton value="Ja" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" onclick="window.location.href='confirmation.xhtml'"/>
+			<p:commandButton value="Nein" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+
+	</h:form>
+
+</h:body>
+</html>

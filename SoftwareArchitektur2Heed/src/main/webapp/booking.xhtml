@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<script type="text/javascript">
+	function HelloWorld(){
+	 alert("Test that text");
+	 }
+
+	</script>
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/> -->
+	<link rel="stylesheet"
+		href="font-awesome-4.3.0/css/font-awesome.min.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:tabMenu activeIndex="0">
+			<p:menuitem value="Neue Buchung"
+				onclick="window.location.href='booking.xhtml'" icon="fa fa-bed" />
+			<p:menuitem value="Buchung bearbeiten"
+				onclick="window.location.href='edit.xhtml'" icon="ui-icon-gear" />
+			<p:menuitem value="Historie" onclick="window.location.href='#'"
+				icon="ui-icon-script" />
+			<p:menuitem value="Anleitung" onclick="window.location.href='#'"
+				icon="ui-icon-help" />
+		</p:tabMenu>
+	</h:form>
+
+	<h1>Raumreservation test Thesi :D</h1>
+	<br></br>
+
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" />
+
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel for="datetime" value="Datum:" />
+			<p:calendar id="datetime" value="#{calendarView.date10}"
+				pattern="MM/dd/yyyy HH:mm" />
+
+
+
+			<p:outputLabel for="raumart" value="Raumart:" />
+			<p:selectOneListbox id="raumart" value="#{selectOneMenuView.raumart}"
+				style="width:250px">
+				<f:selectItem itemLabel="Sitzungszimmer (Meeting)"
+					itemValue="Sitzungszimmer (Meeting)" />
+				<f:selectItem itemLabel="Showroom" itemValue="Showroom" />
+				<f:selectItem itemLabel="Veranstaltungsraum"
+					itemValue="Veranstaltungsraum" />
+				<f:selectItem itemLabel="buchbare Arbeitsräume"
+					itemValue="buchbare Arbeitsräume" />
+				<f:selectItem itemLabel="Aula" itemValue="Aula" />
+			</p:selectOneListbox>
+
+			<p:outputLabel for="raumgroesse" value="Raumgrösse:" />
+			<p:selectOneListbox id="raumgroesse"
+				value="#{selectOneMenuView.raumgroesse}" style="width:250px">
+				<f:selectItem itemLabel="1-5   Personen" itemValue="1-5   Personen" />
+				<f:selectItem itemLabel="5-10  Personen" itemValue="5-10  Personen" />
+				<f:selectItem itemLabel="10-15 Personen" itemValue="10-15 Personen" />
+				<f:selectItem itemLabel="15-20 Personen" itemValue="15-20 Personen" />
+				<f:selectItem itemLabel="20+   Personen" itemValue="20+   Personen" />
+			</p:selectOneListbox>
+		</h:panelGrid>
+
+		<br></br>
+		<br></br>
+
+		<p:commandButton value="verfügbare Räume anzeigen"
+			onclick="window.location.href='available.xhtml'" />
+	</h:form>
+
+</h:body>
+</html>

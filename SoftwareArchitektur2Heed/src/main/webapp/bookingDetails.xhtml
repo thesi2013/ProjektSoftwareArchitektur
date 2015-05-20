@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/> -->
+	<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:tabMenu activeIndex="1">
+			<p:menuitem value="Neue Buchung" onclick="window.location.href='booking.xhtml'" icon="fa fa-bed" />
+			<p:menuitem value="Buchung bearbeiten"  onclick="window.location.href='edit.xhtml'" icon="ui-icon-gear" />
+			<p:menuitem value="Historie" onclick="window.location.href='#'" icon="ui-icon-script" />
+			<p:menuitem value="Anleitung" onclick="window.location.href='#'" icon="ui-icon-help" />
+		</p:tabMenu>
+	</h:form>
+
+	<h1>Buchung bearbeiten"</h1>
+	<br></br>
+	
+	<p:outputLabel value="Guten Tag, getVorname getNachname" />
+	<br></br>
+	<p:outputLabel value="Hier können Sie Ihre Reservationen verwalten." />
+	<br></br>
+	<br></br>
+
+	<h:form id="form">
+
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel for="details" value="Ihre Reservationen:" />
+			<p:selectOneListbox id="details" value="#{selectOneMenuView.details}" style="width:250px">
+				<f:selectItem itemLabel="A" itemValue="A" />
+				<f:selectItem itemLabel="B" itemValue="B" />
+				<f:selectItem itemLabel="C" itemValue="C" />
+				<f:selectItem itemLabel="D" itemValue="D" />
+				<f:selectItem itemLabel="E" itemValue="E" />
+			</p:selectOneListbox>
+
+		</h:panelGrid>
+
+		<br></br>
+		<br></br>
+
+
+
+		<p:growl id="message" showDetail="true" />
+
+		<p:commandButton value="Löschen" actionListener="#{dialogView.loeschen}" update="message">
+			<p:confirm header="Bestätigung!" message="Wollen Sie wirklich löschen?" icon="ui-icon-blank" />
+		</p:commandButton>
+
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="300px">
+			<p:commandButton value="Ja" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" onclick="window.location.href='deleteConfirmation.xhtml'"/>
+			<p:commandButton value="Nein" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+
+	</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/> -->
+	<link rel="stylesheet"
+		href="font-awesome-4.3.0/css/font-awesome.min.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:tabMenu activeIndex="1">
+			<p:menuitem value="Neue Buchung" onclick="window.location.href='booking.xhtml'" icon="fa fa-bed" />
+			<p:menuitem value="Buchung bearbeiten" onclick="window.location.href='edit.xhtml'" icon="ui-icon-gear" />
+			<p:menuitem value="Historie" onclick="window.location.href='#'" icon="ui-icon-script" />
+			<p:menuitem value="Anleitung" onclick="window.location.href='#'" icon="ui-icon-help" />
+		</p:tabMenu>
+	</h:form>
+
+	<h1>Buchung bearbeiten</h1>
+	<br></br>
+
+	<p:outputLabel value="Zur Bearbeitung Ihrer Buchung, müssen Sie Ihren Vor- und Nachnamen eingeben." />
+	<br></br>
+	<br></br>
+	<br></br>
+
+	<h:form id="form">
+		<h:panelGrid columns="2" cellpadding="5">
+
+			<p:outputLabel for="vorname" value="Vorname: " />
+			<p:inputText id="vorname" placeholder="Vorname eingeben..."/>
+
+			<p:outputLabel for="nachname" value="Nachname: " />
+			<p:inputText id="nachname" placeholder="Nachname eingeben..."/>
+
+		</h:panelGrid>
+
+		<br></br>
+		<br></br>
+
+		<p:commandButton value="Buchungen anzeigen" onclick="window.location.href='bookingDetails.xhtml'" />
+	</h:form>
+
+</h:body>
+</html>
