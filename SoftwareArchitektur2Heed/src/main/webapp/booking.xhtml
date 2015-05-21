@@ -14,16 +14,6 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-
-	<!-- Script für Testzwecke -->
-	<script type="text/javascript">
-	function HelloWorld(){
-	 alert("Test that text");
-	 }
-
-	</script>
-
-
 </h:head>
 
 <h:body>
@@ -55,7 +45,7 @@
 				<div class="col-md-1">
 					<p:outputLabel for="datetime" value="Datum:" />
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<p:calendar id="datetime" value="#{calendarView.date10}"
 						pattern="MM/dd/yyyy HH:mm"/>
 				</div>
@@ -109,9 +99,7 @@
 			<br></br>
 			<br></br>
 
-			<p:commandButton value="verfügbare Räume anzeigen"
-				class="btn btn-primary"
-				onclick="window.location.href='available.xhtml'" />
+			<p:commandButton class="col-md-offset-1 btn btn-primary" value="verfügbare Räume anzeigen"  onclick="window.location.href='available.xhtml'" style="width:250px" />
 		</h:form>
 	</div>
 

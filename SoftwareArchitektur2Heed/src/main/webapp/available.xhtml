@@ -24,13 +24,17 @@
 </ul>
 </nav>
 
+	<div class="col-md-12">
 	<h1>Raumreservation für "getSelectedDate"</h1>
 	<br></br>
 
 	<h:form id="form">
 
-		<h:panelGrid columns="2" cellpadding="5">
+			<div class="row">
+			<div class="col-md-1">
 			<p:outputLabel for="gebaeude" value="verfügbare Gebäude:" />
+			</div>
+			<div class="col-md-3">
 			<p:selectOneListbox id="gebaeude" value="#{selectOneMenuView.gebaeude}" style="width:250px">
 				<f:selectItem itemLabel="A" itemValue="A" />
 				<f:selectItem itemLabel="B" itemValue="B" />
@@ -38,8 +42,16 @@
 				<f:selectItem itemLabel="D" itemValue="D" />
 				<f:selectItem itemLabel="E" itemValue="E" />
 			</p:selectOneListbox>
-
+			</div>
+			</div>
+			
+			<br/>
+			
+			<div class="row">
+			<div class="col-md-1">
 			<p:outputLabel for="verfRaum" value="verfügbare Räume:" />
+			</div>
+			<div class="col-md-3">
 			<p:selectOneListbox id="verfRaum"
 				value="#{selectOneMenuView.verfRaum}" style="width:250px">
 				<f:selectItem itemLabel="A 0" itemValue="A" />
@@ -48,24 +60,38 @@
 				<f:selectItem itemLabel="A 3" itemValue="A" />
 				<f:selectItem itemLabel="A 4" itemValue="A" />
 			</p:selectOneListbox>
-		</h:panelGrid>
+			</div>
+			</div>
 
-		<br></br>
-		<br></br>
+			<br/>
+			<br/>
 
+		<div class="row">
+		<div class="col-md-1">
 		<p:outputLabel for="vorname" value="Vorname: " />
-		<p:inputText id="vorname" />
-
+		</div>
+		<div class="col-md-2">
+		<p:inputText id="vorname" style="width:250px" />
+		</div>
+		</div>
+		
+		<br/>
+		
+		<div class="row">
+		<div class="col-md-1">
 		<p:outputLabel for="nachname" value="Nachname: " />
-		<p:inputText id="nachname" />
-
-		<br></br>
-		<br></br>
+		</div>
+		<div class="col-md-2">
+		<p:inputText id="nachname" style="width:250px"/>
+		</div>
+		</div>
+		<br/>
+		<br/>
 
 
 		<p:growl id="message" showDetail="true" />
 
-		<p:commandButton value="Raum reservieren" actionListener="#{dialogView.resRaum}" update="message">
+		<p:commandButton class="col-md-offset-1 btn btn-primary" value="Raum reservieren" actionListener="#{dialogView.resRaum}" update="message" style="width:250px">
 			<p:confirm header="Bestätigung!" message="Wollen Sie wirklich buchen?" icon="ui-icon-blank" />
 		</p:commandButton>
 
@@ -75,6 +101,7 @@
 		</p:confirmDialog>
 
 	</h:form>
+	</div>
 
 </h:body>
 </html>
