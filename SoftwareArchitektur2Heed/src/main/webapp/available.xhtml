@@ -5,21 +5,24 @@
 
 <h:head>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/> -->
-	<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css" />
+
+	<!-- Bootstrap einbinden -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 
 </h:head>
 
 <h:body>
 
-	<h:form>
-		<p:tabMenu activeIndex="0">
-			<p:menuitem value="Neue Buchung" icon="fa fa-bed" />
-			<p:menuitem value="Buchung bearbeiten" icon="ui-icon-gear" />
-			<p:menuitem value="Historie" icon="ui-icon-script" />
-			<p:menuitem value="Anleitung" icon="ui-icon-help" />
-		</p:tabMenu>
-	</h:form>
+<nav class="navbar navbar">
+  <ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="booking.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
+  <li role="presentation"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
+  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Historie</span></a></li>
+  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"> Anleitung</span></a></li>
+</ul>
+</nav>
 
 	<h1>Raumreservation für "getSelectedDate"</h1>
 	<br></br>
