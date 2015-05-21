@@ -27,7 +27,7 @@
 </ul>
 </nav>
 
-
+	<div class="col-md-12">
 	<h1>Buchung bearbeiten</h1>
 	<br></br>
 
@@ -37,21 +37,31 @@
 	<br></br>
 
 	<h:form id="form">
-		<h:panelGrid columns="2" cellpadding="5">
-
+		
+			<div class="row">
+			<div class="col-md-1">
 			<p:outputLabel for="vorname" value="Vorname: " />
-			<p:inputText id="vorname" placeholder="Vorname eingeben..."/>
+			</div>
+			<div class="col-md-3">
+			<p:inputText id="vorname" placeholder="Vorname eingeben..." style="width:250px"/>
+			</div>
+			</div>
 
+			<div class="row">
+			<div class="col-md-1">
 			<p:outputLabel for="nachname" value="Nachname: " />
-			<p:inputText id="nachname" placeholder="Nachname eingeben..."/>
-
-		</h:panelGrid>
+			</div>
+			<div class="col-md-3">
+			<p:inputText id="nachname" placeholder="Nachname eingeben..." style="width:250px"/>
+			</div>
+			</div>
+		
 
 		<br></br>
 		<br></br>
 
-		<p:commandButton value="Buchungen anzeigen" onclick="window.location.href='bookingDetails.xhtml'" />
+		<p:commandButton class="col-md-offset-1 btn btn-primary" value="Buchungen anzeigen" onclick="window.location.href='bookingDetails.xhtml'" style="width:250px"/>
 	</h:form>
-
+	</div>
 </h:body>
 </html>

@@ -10,3 +10,6 @@ p {
 	font-family: Arial;
 }
 
+#p:commandButton {
+	size:50px;
+}

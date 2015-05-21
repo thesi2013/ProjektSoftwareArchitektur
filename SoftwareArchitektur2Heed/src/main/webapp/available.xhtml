@@ -4,103 +4,154 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+
+	<title>DocuBase AG - Verfügbare Räume</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
 	<!-- Bootstrap einbinden -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 
 </h:head>
 
 <h:body>
 
-<nav class="navbar navbar">
-  <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="booking.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
-  <li role="presentation"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
-  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Historie</span></a></li>
-  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"> Anleitung</span></a></li>
-</ul>
-</nav>
+	<nav class="navbar navbar">
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="booking.xhtml"><span
+					class="glyphicon glyphicon-plus-sign" aria-hidden="true">
+						Neue Buchung</span></a></li>
+			<li role="presentation"><a href="edit.xhtml"><span
+					class="glyphicon glyphicon-pencil" aria-hidden="true">
+						Buchung bearbeiten</span></a></li>
+			<li role="presentation"><a href="#"><span
+					class="glyphicon glyphicon-eye-open" aria-hidden="true">
+						Historie</span></a></li>
+			<li role="presentation"><a href="#"><span
+					class="glyphicon glyphicon-question-sign" aria-hidden="true">
+						Anleitung</span></a></li>
+		</ul>
+	</nav>
 
 	<div class="col-md-12">
-	<h1>Raumreservation für "getSelectedDate"</h1>
-	<br></br>
+		<h1>Raumreservation für "getSelectedDate"</h1>
+		<br></br>
 
-	<h:form id="form">
+		<h:form id="form">
 
 			<div class="row">
-			<div class="col-md-1">
-			<p:outputLabel for="gebaeude" value="verfügbare Gebäude:" />
+				<div class="col-md-1">
+					<p:outputLabel for="gebaeude" value="verfügbare Gebäude:" />
+				</div>
+				<div class="col-md-3">
+					<p:selectOneListbox id="gebaeude"
+						value="#{selectOneMenuView.gebaeude}" style="width:250px">
+						<f:selectItem itemLabel="A" itemValue="A" />
+						<f:selectItem itemLabel="B" itemValue="B" />
+						<f:selectItem itemLabel="C" itemValue="C" />
+						<f:selectItem itemLabel="D" itemValue="D" />
+						<f:selectItem itemLabel="E" itemValue="E" />
+					</p:selectOneListbox>
+				</div>
 			</div>
-			<div class="col-md-3">
-			<p:selectOneListbox id="gebaeude" value="#{selectOneMenuView.gebaeude}" style="width:250px">
-				<f:selectItem itemLabel="A" itemValue="A" />
-				<f:selectItem itemLabel="B" itemValue="B" />
-				<f:selectItem itemLabel="C" itemValue="C" />
-				<f:selectItem itemLabel="D" itemValue="D" />
-				<f:selectItem itemLabel="E" itemValue="E" />
-			</p:selectOneListbox>
-			</div>
-			</div>
-			
-			<br/>
-			
+
+			<br />
+
 			<div class="row">
-			<div class="col-md-1">
-			<p:outputLabel for="verfRaum" value="verfügbare Räume:" />
+				<div class="col-md-1">
+					<p:outputLabel for="verfRaum" value="verfügbare Räume:" />
+				</div>
+				<div class="col-md-3">
+					<p:selectOneListbox id="verfRaum"
+						value="#{selectOneMenuView.verfRaum}" style="width:250px">
+						<f:selectItem itemLabel="A 0" itemValue="A" />
+						<f:selectItem itemLabel="A 1" itemValue="A" />
+						<f:selectItem itemLabel="A 2" itemValue="A" />
+						<f:selectItem itemLabel="A 3" itemValue="A" />
+						<f:selectItem itemLabel="A 4" itemValue="A" />
+					</p:selectOneListbox>
+				</div>
 			</div>
-			<div class="col-md-3">
-			<p:selectOneListbox id="verfRaum"
-				value="#{selectOneMenuView.verfRaum}" style="width:250px">
-				<f:selectItem itemLabel="A 0" itemValue="A" />
-				<f:selectItem itemLabel="A 1" itemValue="A" />
-				<f:selectItem itemLabel="A 2" itemValue="A" />
-				<f:selectItem itemLabel="A 3" itemValue="A" />
-				<f:selectItem itemLabel="A 4" itemValue="A" />
-			</p:selectOneListbox>
+
+			<br />
+			<br />
+
+			<div class="row">
+				<div class="col-md-1">
+					<p:outputLabel for="vorname" value="Vorname: " />
+				</div>
+				<div class="col-md-2">
+					<p:inputText id="vorname" style="width:250px" />
+				</div>
 			</div>
+
+			<br />
+
+			<div class="row">
+				<div class="col-md-1">
+					<p:outputLabel for="nachname" value="Nachname: " />
+				</div>
+				<div class="col-md-2">
+					<p:inputText id="nachname" style="width:250px" />
+				</div>
 			</div>
-
-			<br/>
-			<br/>
-
-		<div class="row">
-		<div class="col-md-1">
-		<p:outputLabel for="vorname" value="Vorname: " />
-		</div>
-		<div class="col-md-2">
-		<p:inputText id="vorname" style="width:250px" />
-		</div>
-		</div>
-		
-		<br/>
-		
-		<div class="row">
-		<div class="col-md-1">
-		<p:outputLabel for="nachname" value="Nachname: " />
-		</div>
-		<div class="col-md-2">
-		<p:inputText id="nachname" style="width:250px"/>
-		</div>
-		</div>
-		<br/>
-		<br/>
+			<br />
+			<br />
 
 
-		<p:growl id="message" showDetail="true" />
+		<!-- Button trigger modal -->
+<button class="col-md-offset-1 btn btn-primary" type="button"  data-toggle="modal" data-target="#myModal" style="width:250px">
+  Buchung bestätigen
+</button>
 
-		<p:commandButton class="col-md-offset-1 btn btn-primary" value="Raum reservieren" actionListener="#{dialogView.resRaum}" update="message" style="width:250px">
-			<p:confirm header="Bestätigung!" message="Wollen Sie wirklich buchen?" icon="ui-icon-blank" />
-		</p:commandButton>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+        <h4 class="modal-title" id="myModalLabel">Bestätigung!</h4>
+      </div>
+      <div class="modal-body">
+        Wollen Sie wirklich buchen?
+      </div>
+      <div class="modal-footer">
+        <button type="button" value="Nein" class="btn btn-danger" data-dismiss="modal">Nein</button>
+        <p:commandButton type="button" value="Ja" class="btn btn-primary" onclick="window.location.href='confirmation.xhtml'"></p:commandButton>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="300px">
-			<p:commandButton value="Ja" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" onclick="window.location.href='confirmation.xhtml'"/>
-			<p:commandButton value="Nein" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-		</p:confirmDialog>
+			<!-- 
 
-	</h:form>
+			<p:growl id="message" showDetail="true" />
+
+			<p:commandButton class="col-md-offset-1 btn btn-primary"
+				value="Raum reservieren" actionListener="#{dialogView.resRaum}"
+				update="message" style="width:250px">
+				<p:confirm header="Bestätigung!"
+					message="Wollen Sie wirklich buchen?" icon="ui-icon-blank" />
+			</p:commandButton>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+				width="300px">
+				<p:commandButton value="Ja" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+					onclick="window.location.href='confirmation.xhtml'" />
+				<p:commandButton value="Nein" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+			 -->
+
+		</h:form>
 	</div>
 
 </h:body>

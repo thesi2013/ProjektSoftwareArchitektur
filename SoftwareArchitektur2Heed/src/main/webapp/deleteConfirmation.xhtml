@@ -5,26 +5,29 @@
 
 <h:head>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/> -->
-	<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css" />
+
+	<!-- Bootstrap einbinden -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </h:head>
 
 <h:body>
 
-
-	<h1>setTitle</h1>
+	<div class="col-md-12">
+	<h1>Löschen erfolgreich!</h1>
 	<br></br>
 
 
-
+		
 		<p:outputLabel value="Buchung gelöscht - durch klicken auf Zurück, gelangen Sie zur Übersicht."/>
 		<br></br>
 		<br></br>
 		<br></br>
 
-		<p:commandButton value="Zurück" onclick="window.location.href='bookingDetails.xhtml'"/>
+		<p:commandButton class="btn btn-primary" value="Zurück" onclick="window.location.href='bookingDetails.xhtml'"/>
 
+		</div>
 
 </h:body>
 </html>

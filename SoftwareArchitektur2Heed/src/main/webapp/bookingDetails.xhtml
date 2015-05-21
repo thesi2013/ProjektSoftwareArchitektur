@@ -5,8 +5,6 @@
 
 <h:head>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/> -->
-	<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css" />
 
 	<!-- Bootstrap einbinden -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
@@ -19,14 +17,14 @@
 
 <nav class="navbar navbar">
   <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="booking.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
-  <li role="presentation"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
+  <li role="presentation"><a href="booking.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
+  <li role="presentation" class="active"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
   <li role="presentation"><a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Historie</span></a></li>
   <li role="presentation"><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"> Anleitung</span></a></li>
 </ul>
 </nav>
 
-
+	<div class="col-md-12">
 	<h1>Buchung bearbeiten"</h1>
 	<br></br>
 	
@@ -38,8 +36,13 @@
 
 	<h:form id="form">
 
-		<h:panelGrid columns="2" cellpadding="5">
+			<div class="row">
+			<div class="col-md-1">
 			<p:outputLabel for="details" value="Ihre Reservationen:" />
+			</div>
+			<div class="col-md-3">
+			
+			<!-- TODO: Daten aus Datenbank ziehen -->
 			<p:selectOneListbox id="details" value="#{selectOneMenuView.details}" style="width:250px">
 				<f:selectItem itemLabel="A" itemValue="A" />
 				<f:selectItem itemLabel="B" itemValue="B" />
@@ -47,14 +50,69 @@
 				<f:selectItem itemLabel="D" itemValue="D" />
 				<f:selectItem itemLabel="E" itemValue="E" />
 			</p:selectOneListbox>
-
-		</h:panelGrid>
+			</div>
+			</div>
+			<br/>
+			<br/>
+			
+			<!-- TODO: Daten aus Datenbank ziehen -->
+			
+			<div class="row">
+			<div class="col-md-4">
+			<table class="table table-hover">
+			<THEAD>
+				<tr>
+				<td>Gebäude</td>
+				<td>Raumart</td>
+				<td>Raumnummer</td>
+				<td>Datum</td>
+				<td>Uhrzeit</td>
+				</tr>
+			</THEAD>
+			<TBODY>
+			<tr>
+				<td>A</td>
+				<td>Aula</td>
+				<td>101</td>
+				<td>12.3.2014</td>
+				<td>12:00</td>
+			</tr>
+			</TBODY>
+			</table>
+			</div>
+			</div>
 
 		<br></br>
 		<br></br>
+		
+				<!-- Button trigger modal -->
+<button class="col-md-offset-1 btn btn-primary" type="button"  data-toggle="modal" data-target="#myModal" style="width:250px">
+  Löschen
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+        <h4 class="modal-title" id="myModalLabel">Löschen!</h4>
+      </div>
+      <div class="modal-body">
+        Wollen Sie diesen Eintrag wirklich löschen?
+      </div>
+      <div class="modal-footer">
+        <button type="button" value="Nein" class="btn btn-danger" data-dismiss="modal">Nein</button>
+        <p:commandButton type="button" value="Ja" class="btn btn-primary" onclick="window.location.href='deleteConfirmation.xhtml'"></p:commandButton>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-
+		<!-- 
 		<p:growl id="message" showDetail="true" />
 
 		<p:commandButton value="Löschen" actionListener="#{dialogView.loeschen}" update="message">
@@ -65,8 +123,11 @@
 			<p:commandButton value="Ja" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" onclick="window.location.href='deleteConfirmation.xhtml'"/>
 			<p:commandButton value="Nein" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 		</p:confirmDialog>
+		
+		-->
 
 	</h:form>
+	</div>
 
 </h:body>
 </html>
