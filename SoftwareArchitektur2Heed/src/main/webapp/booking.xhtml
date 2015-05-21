@@ -7,12 +7,14 @@
 
 	<title>DocuBase AG - Neue Buchung erfassen</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	
+
 	<!-- Bootstrap einbinden -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	
-	
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
 	<!-- Script für Testzwecke -->
 	<script type="text/javascript">
 	function HelloWorld(){
@@ -26,59 +28,91 @@
 
 <h:body>
 
-<nav class="navbar navbar">
-  <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="booking.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
-  <li role="presentation"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
-  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Historie</span></a></li>
-  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"> Anleitung</span></a></li>
-</ul>
-</nav>
+	<nav class="navbar navbar">
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="booking.xhtml"><span
+					class="glyphicon glyphicon-plus-sign" aria-hidden="true">
+						Neue Buchung</span></a></li>
+			<li role="presentation"><a href="edit.xhtml"><span
+					class="glyphicon glyphicon-pencil" aria-hidden="true">
+						Buchung bearbeiten</span></a></li>
+			<li role="presentation"><a href="#"><span
+					class="glyphicon glyphicon-eye-open" aria-hidden="true">
+						Historie</span></a></li>
+			<li role="presentation"><a href="#"><span
+					class="glyphicon glyphicon-question-sign" aria-hidden="true">
+						Anleitung</span></a></li>
+		</ul>
+	</nav>
 
-
-	<h1>Raumreservation TEST GUI</h1>
-	<br></br>
-
-	<div class="col-md-1">
-	<h:form id="form">
-		<p:growl id="msgs" showDetail="true" />
-
-		<!-- Für Primefaces benötigt <h:panelGrid columns="2" cellpadding="5"> -->
-			<p:outputLabel for="datetime" value="Datum:" />
-			<p:calendar id="datetime" value="#{calendarView.date10}"
-				pattern="MM/dd/yyyy HH:mm" />
-
-			<br/>
-
-			<p:outputLabel for="raumart" value="Raumart:" />
-			<p:selectOneListbox id="raumart" value="#{selectOneMenuView.raumart}"
-				style="width:250px">
-				<f:selectItem itemLabel="Sitzungszimmer (Meeting)"
-					itemValue="Sitzungszimmer (Meeting)" />
-				<f:selectItem itemLabel="Showroom" itemValue="Showroom" />
-				<f:selectItem itemLabel="Veranstaltungsraum"
-					itemValue="Veranstaltungsraum" />
-				<f:selectItem itemLabel="buchbare Arbeitsräume"
-					itemValue="buchbare Arbeitsräume" />
-				<f:selectItem itemLabel="Aula" itemValue="Aula" />
-			</p:selectOneListbox>
-
-			<p:outputLabel for="raumgroesse" value="Raumgrösse:" />
-			<p:selectOneListbox id="raumgroesse"
-				value="#{selectOneMenuView.raumgroesse}" style="width:250px">
-				<f:selectItem itemLabel="1-5   Personen" itemValue="1-5   Personen" />
-				<f:selectItem itemLabel="5-10  Personen" itemValue="5-10  Personen" />
-				<f:selectItem itemLabel="10-15 Personen" itemValue="10-15 Personen" />
-				<f:selectItem itemLabel="15-20 Personen" itemValue="15-20 Personen" />
-				<f:selectItem itemLabel="20+   Personen" itemValue="20+   Personen" />
-			</p:selectOneListbox>
-		<!-- Für Primefaces benötigt </h:panelGrid> -->
-
-		<br></br>
+	<div class="col-md-12">
+		<h1>Raumreservation TEST GUI</h1>
 		<br></br>
 
-		<p:commandButton value="verfügbare Räume anzeigen" class="btn btn-primary" onclick="window.location.href='available.xhtml'" />
-	</h:form>
+		<h:form id="form">
+
+			<div class="row">
+				<div class="col-md-1">
+					<p:outputLabel for="datetime" value="Datum:" />
+				</div>
+				<div class="col-md-3">
+					<p:calendar id="datetime" value="#{calendarView.date10}"
+						pattern="MM/dd/yyyy HH:mm"/>
+				</div>
+			</div>
+
+			<br />
+
+
+			<div class="row">
+				<div class="col-md-1">
+					<p:outputLabel for="raumart" value="Raumart:" />
+				</div>
+				<div class="col-md-3">
+					<p:selectOneListbox id="raumart"
+						value="#{selectOneMenuView.raumart}" style="width:250px">
+						<f:selectItem itemLabel="Sitzungszimmer (Meeting)"
+							itemValue="Sitzungszimmer (Meeting)" />
+						<f:selectItem itemLabel="Showroom" itemValue="Showroom" />
+						<f:selectItem itemLabel="Veranstaltungsraum"
+							itemValue="Veranstaltungsraum" />
+						<f:selectItem itemLabel="buchbare Arbeitsräume"
+							itemValue="buchbare Arbeitsräume" />
+						<f:selectItem itemLabel="Aula" itemValue="Aula" />
+					</p:selectOneListbox>
+				</div>
+			</div>
+
+			<br />
+
+			<div class="row">
+				<div class="col-md-1">
+					<p:outputLabel for="raumgroesse" value="Raumgrösse:" />
+				</div>
+				<div class="col-md-3">
+					<p:selectOneListbox id="raumgroesse"
+						value="#{selectOneMenuView.raumgroesse}" style="width:250px">
+						<f:selectItem itemLabel="1-5   Personen"
+							itemValue="1-5   Personen" />
+						<f:selectItem itemLabel="5-10  Personen"
+							itemValue="5-10  Personen" />
+						<f:selectItem itemLabel="10-15 Personen"
+							itemValue="10-15 Personen" />
+						<f:selectItem itemLabel="15-20 Personen"
+							itemValue="15-20 Personen" />
+						<f:selectItem itemLabel="20+   Personen"
+							itemValue="20+   Personen" />
+					</p:selectOneListbox>
+				</div>
+			</div>
+
+			<br></br>
+			<br></br>
+
+			<p:commandButton value="verfügbare Räume anzeigen"
+				class="btn btn-primary"
+				onclick="window.location.href='available.xhtml'" />
+		</h:form>
 	</div>
 
 </h:body>
