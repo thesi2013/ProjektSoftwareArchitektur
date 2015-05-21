@@ -13,3 +13,8 @@ p {
 #p:commandButton {
 	size:50px;
 }
+
+body.bg {
+background-image: url(../img/bg.png);
+}
+
