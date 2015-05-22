@@ -7,27 +7,33 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
 import business.ReservationManagerBean;
+import entities.Nutzungskategorie;
+import entities.Raum;
 import entities.Reservation;
 
 @Named
 @RequestScoped
 public class FrontendManager {
 	
-	private Reservation entity = new Reservation();
+	private Reservation reservation = new Reservation();
+	private Raum raum = new Raum();
+	private Nutzungskategorie kategorie = new Nutzungskategorie();
 
 	@EJB
 	ReservationManagerBean bean;
 	
 	public void searchRooms(){
 		System.out.println("methode searchBooks() aufgerufen");
-		
+		System.out.println(raum.getGroesse());
+		System.out.println(kategorie.getKategorie());
+		//bean.availableRooms(raum);
 	}
 	
 	
 	
 	public void store(){
 		System.out.println("gespeichert");
-		bean.addReservation(entity);
+		bean.addReservation(reservation);
 	}
 	
 	public List <String> getReservation(){
@@ -35,11 +41,31 @@ public class FrontendManager {
 	}
 
 	public Reservation getEntity() {
-		return entity;
+		return reservation;
 	}
 
 	public void setEntity(Reservation entity) {
-		this.entity = entity;
+		this.reservation = entity;
+	}
+
+	public Raum getRaum() {
+		return raum;
+	}
+
+	public void setRaum(Raum raum) {
+		this.raum = raum;
+	}
+
+
+
+	public Nutzungskategorie getKategorie() {
+		return kategorie;
+	}
+
+
+
+	public void setKategorie(Nutzungskategorie kategorie) {
+		this.kategorie = kategorie;
 	}
 	
 	

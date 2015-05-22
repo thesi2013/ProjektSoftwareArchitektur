@@ -62,8 +62,7 @@
 					<p:outputLabel for="raumart" value="Raumart:" />
 				</div>
 				<div class="col-md-3">
-				<!-- value="#{selectOneMenuView.raumart}" -->
-					<p:selectOneListbox id="raumart"
+					<p:selectOneListbox id="raumart" value="#{frontendManager.kategorie.kategorie}"
 						 style="width:250px">
 						<f:selectItem itemLabel="Sitzungszimmer (Meeting)"
 							itemValue="Sitzungszimmer (Meeting)" />
@@ -84,8 +83,7 @@
 					<p:outputLabel for="raumgroesse" value="Raumgrösse:" />
 				</div>
 				<div class="col-md-3">
-				<!--value="#{selectOneMenuView.raumgroesse}" --> 
-					<p:selectOneListbox id="raumgroesse"
+					<p:selectOneListbox id="raumgroesse" value="#{frontendManager.raum.groesse}"
 						style="width:250px">
 						<f:selectItem itemLabel="1-5   Personen"
 							itemValue="1-5   Personen" />

@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import entities.Raum;
 import entities.Reservation;
 
 @Stateless
@@ -17,6 +18,11 @@ public class ReservationManagerBean {
 	
 	@PersistenceContext(unitName = "primary")
 	EntityManager em;
+	
+	
+	public void availableRooms(Raum raum){
+		
+	}
 	
 	public void addReservation(Reservation entity){
 		System.out.println("hinzugefügt");
