@@ -18,6 +18,13 @@ public class FrontendManager {
 	@EJB
 	ReservationManagerBean bean;
 	
+	public void searchRooms(){
+		System.out.println("methode searchBooks() aufgerufen");
+		
+	}
+	
+	
+	
 	public void store(){
 		System.out.println("gespeichert");
 		bean.addReservation(entity);

@@ -48,7 +48,8 @@
 					<p:outputLabel for="datetime" value="Datum:" />
 				</div>
 				<div class="col-md-6">
-					<p:calendar id="datetime" value="#{calendarView.date10}"
+				<!-- value="#{calendarView.date10}" -->
+					<p:calendar id="datetime" 
 						pattern="MM/dd/yyyy HH:mm"/>
 				</div>
 			</div>
@@ -61,8 +62,9 @@
 					<p:outputLabel for="raumart" value="Raumart:" />
 				</div>
 				<div class="col-md-3">
+				<!-- value="#{selectOneMenuView.raumart}" -->
 					<p:selectOneListbox id="raumart"
-						value="#{selectOneMenuView.raumart}" style="width:250px">
+						 style="width:250px">
 						<f:selectItem itemLabel="Sitzungszimmer (Meeting)"
 							itemValue="Sitzungszimmer (Meeting)" />
 						<f:selectItem itemLabel="Showroom" itemValue="Showroom" />
@@ -82,8 +84,9 @@
 					<p:outputLabel for="raumgroesse" value="Raumgrösse:" />
 				</div>
 				<div class="col-md-3">
+				<!--value="#{selectOneMenuView.raumgroesse}" --> 
 					<p:selectOneListbox id="raumgroesse"
-						value="#{selectOneMenuView.raumgroesse}" style="width:250px">
+						style="width:250px">
 						<f:selectItem itemLabel="1-5   Personen"
 							itemValue="1-5   Personen" />
 						<f:selectItem itemLabel="5-10  Personen"
@@ -101,7 +104,8 @@
 			<br></br>
 			<br></br>
 
-			<p:commandButton class="col-md-offset-1 btn btn-primary" value="verfügbare Räume anzeigen"  onclick="window.location.href='available.xhtml'" style="width:250px" />
+			<p:commandButton class="col-md-offset-1 btn btn-primary" value="verfügbare Räume anzeigen" action="#{frontendManager.searchRooms()}" style="width:250px" />
+			<!-- onclick="window.location.href='available.xhtml'" -->
 		</h:form>
 	</div>
 
