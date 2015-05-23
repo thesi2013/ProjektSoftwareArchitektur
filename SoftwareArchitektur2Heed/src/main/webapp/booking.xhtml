@@ -6,14 +6,17 @@
 <h:head>
 
 	<title>DocuBase AG - Neue Buchung erfassen</title>
+	
+	<!-- CSS einbinden-->
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="css/datepicker.css" type="text/css" />
+	
 
 	<!-- Bootstrap einbinden -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
 </h:head>
 
 <h:body class="bg">
@@ -50,9 +53,34 @@
 				<div class="col-md-6">
 				<!-- value="#{calendarView.date10}" -->
 					<p:calendar id="datetime" 
-						pattern="MM/dd/yyyy HH:mm"/>
+						pattern="dd/MM/yyyy"/>
 				</div>
 			</div>
+			
+			<br />
+				<input  type="text" placeholder="Datum"  id="datepicker" />
+			<br />
+			<br />
+			
+			<div class="row">
+				<div class="col-md-1">
+					<p:outputLabel for="startzeit" value="Von: " />
+				</div>
+				<div class="col-md-2">
+					<p:inputText id="startzeit" style="width:250px" />
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-1">
+					<p:outputLabel for="endzeit" value="Bis: " />
+				</div>
+				<div class="col-md-2">
+					<p:inputText id="endzeit" style="width:250px" />
+				</div>
+			</div>
+			
 
 			<br />
 
@@ -64,13 +92,10 @@
 				<div class="col-md-3">
 					<p:selectOneListbox id="raumart" value="#{frontendManager.kategorie.kategorie}"
 						 style="width:250px">
-						<f:selectItem itemLabel="Sitzungszimmer (Meeting)"
-							itemValue="Sitzungszimmer (Meeting)" />
+						<f:selectItem itemLabel="Sitzungszimmer" itemValue="Sitzungszimmer" />
 						<f:selectItem itemLabel="Showroom" itemValue="Showroom" />
-						<f:selectItem itemLabel="Veranstaltungsraum"
-							itemValue="Veranstaltungsraum" />
-						<f:selectItem itemLabel="buchbare Arbeitsräume"
-							itemValue="buchbare Arbeitsräume" />
+						<f:selectItem itemLabel="Veranstaltungsraum" itemValue="Veranstaltungsraum" />
+						<f:selectItem itemLabel="Arbeitsräume" itemValue="Arbeitsräume" />
 						<f:selectItem itemLabel="Aula" itemValue="Aula" />
 					</p:selectOneListbox>
 				</div>
@@ -80,7 +105,7 @@
 
 			<div class="row">
 				<div class="col-md-1">
-					<p:outputLabel for="raumgroesse" value="Raumgrösse:" />
+					<p:outputLabel for="raumgroesse" value="Raum-grösse: " />
 				</div>
 				<div class="col-md-3">
 					<p:selectOneListbox id="raumgroesse" value="#{frontendManager.raum.groesse}"
@@ -107,5 +132,17 @@
 		</h:form>
 	</div>
 
+
+	<!-- JavaScript einbinden -->
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {        
+        	$('#datepicker').datepicker({
+            	format: "dd/mm/yyyy"
+        	});      
+    	});
+
+	</script>
 </h:body>
 </html>
