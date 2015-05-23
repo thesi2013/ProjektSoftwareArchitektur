@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 /**
@@ -15,6 +16,7 @@ public class Nutzungskategorie implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column
