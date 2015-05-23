@@ -10,8 +10,8 @@ p {
 	font-family: Arial;
 }
 
-#p:commandButton {
-	size:50px;
+.dateTimeField input {
+   width:260px;
 }
 
 body.bg {

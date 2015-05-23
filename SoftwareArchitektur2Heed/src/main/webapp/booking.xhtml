@@ -9,8 +9,6 @@
 	
 	<!-- CSS einbinden-->
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-	<link rel="stylesheet" href="css/datepicker.css" type="text/css" />
 	
 
 	<!-- Bootstrap einbinden -->
@@ -47,37 +45,36 @@
 		<!-- TODO: Dauer der Reservation (evtl über 2 Kalender, evtl. über Zeitdauer, evtl. ob Dauer überhaupt notwendig) -->
 
 			<div class="row">
-				<div class="col-md-1">
-					<p:outputLabel for="datetime" value="Datum:" />
+				<div class="col-md-2">
+					<p:outputLabel for="dateFrom" value="Datum von:" />
 				</div>
-				<div class="col-md-6">
-				<!-- value="#{calendarView.date10}" -->
-					<p:calendar id="datetime" 
-						pattern="dd/MM/yyyy"/>
+				<div class="col-md-2">				
+				<p:calendar id="dateFrom" pattern="dd-MM-yyyy" styleClass="dateTimeField" /><!--   value="#{calendarView.date10}" -->
+				</div>
+				
+					<div class="col-md-2 col-md-offset-1">
+					<p:outputLabel for="dateTo" value="Datum bis:" />
+				</div>
+				<div class="col-md-2">				
+				<p:calendar id="dateTo" pattern="dd-MM-yyyy" styleClass="dateTimeField"/><!--   value="#{calendarView.date10}" -->
 				</div>
 			</div>
 			
-			<br />
-				<input  type="text" placeholder="Datum"  id="datepicker" />
-			<br />
-			<br />
+			<br/>
 			
+		
 			<div class="row">
-				<div class="col-md-1">
+				<div class="col-md-2">
 					<p:outputLabel for="startzeit" value="Von: " />
 				</div>
 				<div class="col-md-2">
-					<p:inputText id="startzeit" style="width:250px" />
+					<p:inputText id="startzeit" style="width:260px" />
 				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="col-md-1">
+				<div class="col-md-2 col-md-offset-1">
 					<p:outputLabel for="endzeit" value="Bis: " />
 				</div>
 				<div class="col-md-2">
-					<p:inputText id="endzeit" style="width:250px" />
+					<p:inputText id="endzeit" style="width:260px" />
 				</div>
 			</div>
 			
@@ -86,12 +83,12 @@
 
 
 			<div class="row">
-				<div class="col-md-1">
+				<div class="col-md-2">
 					<p:outputLabel for="raumart" value="Raumart:" />
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-2">
 					<p:selectOneListbox id="raumart" value="#{frontendManager.kategorie.kategorie}"
-						 style="width:250px">
+						 style="width:260px">
 						<f:selectItem itemLabel="Sitzungszimmer" itemValue="Sitzungszimmer" />
 						<f:selectItem itemLabel="Showroom" itemValue="Showroom" />
 						<f:selectItem itemLabel="Veranstaltungsraum" itemValue="Veranstaltungsraum" />
@@ -104,12 +101,12 @@
 			<br />
 
 			<div class="row">
-				<div class="col-md-1">
-					<p:outputLabel for="raumgroesse" value="Raum-grösse: " />
+				<div class="col-md-2">
+					<p:outputLabel for="raumgroesse" value="Raumgrösse: " />
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-2">
 					<p:selectOneListbox id="raumgroesse" value="#{frontendManager.raum.groesse}"
-						style="width:250px">
+						style="width:260px">
 						<f:selectItem itemLabel="1-5   Personen"
 							itemValue="1-5   Personen" />
 						<f:selectItem itemLabel="5-10  Personen"
@@ -127,22 +124,9 @@
 			<br></br>
 			<br></br>
 
-			<p:commandButton class="col-md-offset-1 btn btn-primary" value="verfügbare Räume anzeigen" action="#{frontendManager.searchRooms()}" style="width:250px" />
+			<p:commandButton class="col-md-offset-2 btn btn-primary" value="verfügbare Räume anzeigen" action="#{frontendManager.searchRooms()}" style="width:250px" />
 			<!-- onclick="window.location.href='available.xhtml'" -->
 		</h:form>
 	</div>
-
-
-	<!-- JavaScript einbinden -->
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {        
-        	$('#datepicker').datepicker({
-            	format: "dd/mm/yyyy"
-        	});      
-    	});
-
-	</script>
 </h:body>
 </html>
