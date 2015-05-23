@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 /**
@@ -17,6 +18,7 @@ public class Raum implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column
@@ -24,6 +26,9 @@ public class Raum implements Serializable {
 	
 	@Column
 	private String groesse;
+	
+	@OneToOne(mappedBy ="raum")
+	private Reservation reservation;
 	
 	public int getId() {
 		return id;

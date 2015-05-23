@@ -34,7 +34,7 @@ public class ReservationManagerBean {
 		TypedQuery<Reservation> query = em.createNamedQuery(Reservation.findAll, Reservation.class);
 		List <Reservation> resultat = query.getResultList();
 		for (Reservation entity : resultat){
-			res.add(entity.getDay());
+			//res.add(entity.getDay());
 		}
 		return res;
 	}

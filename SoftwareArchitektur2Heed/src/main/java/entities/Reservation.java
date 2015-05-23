@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -25,12 +26,39 @@ public class Reservation implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Temporal(TemporalType.DATE)
+	private Date datumVon;
+	@Temporal(TemporalType.DATE)
+	private Date datumBis;
+	/*@Temporal(TemporalType.TIME)
+	private Time zeitVon;
+	@Temporal(TemporalType.TIME)
+	private Time zeitBis;*/
 	
-	@Column (nullable = false)
-	private String day;
+	private int mitarbeiterId;
+	
+	@OneToOne
+	@JoinColumn(name = "raumId_FK")
+	private Raum raum;
 
 	
 	
+	public Date getDatumVon() {
+		return datumVon;
+	}
+
+	public void setDatumVon(Date datumVon) {
+		this.datumVon = datumVon;
+	}
+
+	public Date getDatumBis() {
+		return datumBis;
+	}
+
+	public void setDatumBis(Date datumBis) {
+		this.datumBis = datumBis;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -39,14 +67,14 @@ public class Reservation implements Serializable {
 		this.id = id;
 	}
 
-	public String getDay() {
-		return day;
+	public int getMitarbeiterId() {
+		return mitarbeiterId;
 	}
 
-	public void setDay(String day) {
-		this.day = day;
+	public void setMitarbeiterId(int mitarbeiterId) {
+		this.mitarbeiterId = mitarbeiterId;
 	}
-	
+
 	
    
 }

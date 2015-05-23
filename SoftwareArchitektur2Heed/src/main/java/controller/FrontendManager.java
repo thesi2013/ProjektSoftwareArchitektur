@@ -23,12 +23,15 @@ public class FrontendManager {
 	ReservationManagerBean bean;
 	
 	public void searchRooms(){
-		System.out.println("methode searchBooks() aufgerufen");
+		System.out.println("methode searchRooms() aufgerufen");
 		System.out.println(raum.getGroesse());
 		System.out.println(kategorie.getKategorie());
 		//bean.availableRooms(raum);
 	}
 	
+	public void checkEmployeeName (){
+		System.out.println("Methode checkEmployeeName() aufgerufen");
+	}
 	
 	
 	public void store(){
