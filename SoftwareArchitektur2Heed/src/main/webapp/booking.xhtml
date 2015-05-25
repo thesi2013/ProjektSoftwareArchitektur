@@ -80,20 +80,20 @@
 					<p:outputLabel for="dateFrom" value="Datum von:" />
 				</div>
 				<div class="col-md-2">				
-				<p:calendar id="dateFrom" pattern="dd-MM-yyyy" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de"/><!--   value="#{calendarView.date10}" -->
+				<p:calendar id="dateFrom" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de"/><!--   value="#{calendarView.date10}" -->
 				</div>
 				
 					<div class="col-md-2 col-md-offset-1">
 					<p:outputLabel for="dateTo" value="Datum bis:" />
 				</div>
 				<div class="col-md-2">				
-				<p:calendar id="dateTo" pattern="dd-MM-yyyy" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de"/><!--   value="#{calendarView.date10}" -->
+				<p:calendar id="dateTo" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de"/><!--   value="#{calendarView.date10}" -->
 				</div>
 			</div>
 			
 			<br/>
 			
-		
+<!--		
 			<div class="row">
 				<div class="col-md-2">
 					<p:outputLabel for="startzeit" value="Zeit von: " />
@@ -108,7 +108,7 @@
 					<p:calendar id="endzeit" value="#{calendarView.date}" stepMinute="15" pattern="HH:mm" timeOnly="true" required="true" readonlyInput="true" styleClass="dateTimeField" locale="de" />
 				</div>
 			</div>
-			
+-->			
 
 			<br />
 
@@ -119,11 +119,11 @@
 				</div>
 				<div class="col-md-2">
 					<p:selectOneListbox id="raumart" value="#{frontendManager.kategorie.kategorie}" required="true" style="width:260px">
-						<f:selectItem itemLabel="Sitzungszimmer" itemValue="0" />
-						<f:selectItem itemLabel="Showroom" itemValue="1" />
-						<f:selectItem itemLabel="Veranstaltungsraum" itemValue="2" />
-						<f:selectItem itemLabel="Arbeitsräume" itemValue="3" />
-						<f:selectItem itemLabel="Aula" itemValue="4" />
+						<f:selectItem itemLabel="Sitzungszimmer" itemValue="1" />
+						<f:selectItem itemLabel="Showroom" itemValue="2" />
+						<f:selectItem itemLabel="Veranstaltungsraum" itemValue="3" />
+						<f:selectItem itemLabel="Arbeitsräume" itemValue="4" />
+						<f:selectItem itemLabel="Aula" itemValue="5" />
 					</p:selectOneListbox>
 				</div>
 			</div>
@@ -136,16 +136,11 @@
 				</div>
 				<div class="col-md-2">
 					<p:selectOneListbox id="raumgroesse" value="#{frontendManager.raum.groesse}" required="true" style="width:260px">
-						<f:selectItem itemLabel="1-5   Personen"
-							itemValue="1-5   Personen" />
-						<f:selectItem itemLabel="5-10  Personen"
-							itemValue="5-10  Personen" />
-						<f:selectItem itemLabel="10-15 Personen"
-							itemValue="10-15 Personen" />
-						<f:selectItem itemLabel="15-20 Personen"
-							itemValue="15-20 Personen" />
-						<f:selectItem itemLabel="20+   Personen"
-							itemValue="20+   Personen" />
+						<f:selectItem itemLabel="1-5 Personen" itemValue="1-5 Personen" />
+						<f:selectItem itemLabel="5-10 Personen" itemValue="5-10 Personen" />
+						<f:selectItem itemLabel="10-15 Personen" itemValue="10-15 Personen" />
+						<f:selectItem itemLabel="15-20 Personen" itemValue="15-20 Personen" />
+						<f:selectItem itemLabel="20+ Personen" itemValue="20+ Personen" />
 					</p:selectOneListbox>
 				</div>
 			</div>
