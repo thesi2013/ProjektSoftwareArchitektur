@@ -19,34 +19,66 @@ public class Raum implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int idRaum;
 	
-	@Column
-	private String bezeichnung;
+	@OneToOne
+	@JoinColumn(name = "idGebaude")
+	private Gebaeude gebaeude;
+	
+	@OneToOne
+	@JoinColumn(name = "idNutzungskategorie")
+	private Nutzungskategorie nutzungskategorie;
 	
 	@Column
 	private String groesse;
 	
+	@Column
+	private String bezeichnung;
+	
+	
 	@OneToOne(mappedBy ="raum")
 	private Reservation reservation;
-	
-	public int getId() {
-		return id;
+
+
+	public int getIdRaum() {
+		return idRaum;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+
+	public void setIdRaum(int idRaum) {
+		this.idRaum = idRaum;
 	}
-	public String getBezeichnung() {
-		return bezeichnung;
+
+
+	public Gebaeude getGebaeude() {
+		return gebaeude;
 	}
-	public void setBezeichnung(String bezeichnung) {
-		this.bezeichnung = bezeichnung;
+
+
+	public void setGebaeude(Gebaeude gebaeude) {
+		this.gebaeude = gebaeude;
 	}
+
+
 	public String getGroesse() {
 		return groesse;
 	}
+
+
 	public void setGroesse(String groesse) {
 		this.groesse = groesse;
 	}
+
+
+	public String getBezeichnung() {
+		return bezeichnung;
+	}
+
+
+	public void setBezeichnung(String bezeichnung) {
+		this.bezeichnung = bezeichnung;
+	}
+	
+	
    
 }

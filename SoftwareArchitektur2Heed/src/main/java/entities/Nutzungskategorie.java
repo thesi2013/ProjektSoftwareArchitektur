@@ -17,25 +17,32 @@ public class Nutzungskategorie implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int idNutzungskategorie;
 	
 	@Column
-	private String kategorie;
+	private String bezeichnung;
+	
+	@OneToOne(mappedBy ="nutzungskategorie")
+	private Raum raum;
 
-	public int getId() {
-		return id;
+	
+	
+	public int getIdNutzungskategorie() {
+		return idNutzungskategorie;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdNutzungskategorie(int idNutzungskategorie) {
+		this.idNutzungskategorie = idNutzungskategorie;
 	}
 
-	public String getKategorie() {
-		return kategorie;
+	public String getBezeichnung() {
+		return bezeichnung;
 	}
 
-	public void setKategorie(String kategorie) {
-		this.kategorie = kategorie;
+	public void setBezeichnung(String bezeichnung) {
+		this.bezeichnung = bezeichnung;
 	}
-   
+	
+	
+	
 }

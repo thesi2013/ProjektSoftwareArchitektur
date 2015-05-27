@@ -17,32 +17,78 @@ public class Gebaeude implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int idGebaeude;
+	
+	@Column
+	private String name;
 	
 	@Column
 	private String bezeichnung;
+	
 	@Column
-	private String adresse;
+	private String strasse;
+	
+	@Column
+	private int plz;
+	
+	@Column
+	private String ort;
+	
+	@OneToOne(mappedBy ="gebaeude")
+	private Raum raum;
+
 	
 	
-	public int getId() {
-		return id;
+	public int getIdGebaeude() {
+		return idGebaeude;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public void setIdGebaeude(int idGebaeude) {
+		this.idGebaeude = idGebaeude;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
+
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
-	public String getAdresse() {
-		return adresse;
+
+	public String getStrasse() {
+		return strasse;
 	}
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+
+	public void setStrasse(String strasse) {
+		this.strasse = strasse;
 	}
+
+	public int getPlz() {
+		return plz;
+	}
+
+	public void setPlz(int plz) {
+		this.plz = plz;
+	}
+
+	public String getOrt() {
+		return ort;
+	}
+
+	public void setOrt(String ort) {
+		this.ort = ort;
+	}
+	
+	
+	
 	
 	
 }

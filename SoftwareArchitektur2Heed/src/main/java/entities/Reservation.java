@@ -25,56 +25,52 @@ public class Reservation implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@Temporal(TemporalType.DATE)
-	private Date datumVon;
-	@Temporal(TemporalType.DATE)
-	private Date datumBis;
-	/*@Temporal(TemporalType.TIME)
-	private Time zeitVon;
-	@Temporal(TemporalType.TIME)
-	private Time zeitBis;*/
-	
-	private int mitarbeiterId;
+	private int idReservation;
 	
 	@OneToOne
-	@JoinColumn(name = "raumId_FK")
+	@JoinColumn(name = "idRaum")
 	private Raum raum;
-
+	
+	private int idMitarbeiter;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date reserviertVon;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date reserviertBis;
 	
 	
-	public Date getDatumVon() {
-		return datumVon;
+	
+	public int getIdReservation() {
+		return idReservation;
 	}
-
-	public void setDatumVon(Date datumVon) {
-		this.datumVon = datumVon;
+	public void setIdReservation(int idReservation) {
+		this.idReservation = idReservation;
 	}
-
-	public Date getDatumBis() {
-		return datumBis;
+	public Raum getRaum() {
+		return raum;
 	}
-
-	public void setDatumBis(Date datumBis) {
-		this.datumBis = datumBis;
+	public void setRaum(Raum raum) {
+		this.raum = raum;
 	}
-
-	public int getId() {
-		return id;
+	public int getIdMitarbeiter() {
+		return idMitarbeiter;
 	}
-
-	public void setId(int id) {
-		this.id = id;
+	public void setIdMitarbeiter(int idMitarbeiter) {
+		this.idMitarbeiter = idMitarbeiter;
 	}
-
-	public int getMitarbeiterId() {
-		return mitarbeiterId;
+	public Date getReserviertVon() {
+		return reserviertVon;
 	}
-
-	public void setMitarbeiterId(int mitarbeiterId) {
-		this.mitarbeiterId = mitarbeiterId;
+	public void setReserviertVon(Date reserviertVon) {
+		this.reserviertVon = reserviertVon;
 	}
-
+	public Date getReserviertBis() {
+		return reserviertBis;
+	}
+	public void setReserviertBis(Date reserviertBis) {
+		this.reserviertBis = reserviertBis;
+	}
+	
 	
    
 }
