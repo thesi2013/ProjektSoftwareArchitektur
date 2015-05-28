@@ -118,7 +118,7 @@
 					<p:outputLabel for="raumart" value="Raumart:" />
 				</div>
 				<div class="col-md-2">
-					<p:selectOneListbox id="raumart" value="#{frontendManager.nutzungskategorie.bezeichnung}" required="true" style="width:260px">
+					<p:selectOneListbox id="raumart" value="#{frontendManager.resData.nutzungskateID}" required="true" style="width:260px">
 						<f:selectItem itemLabel="Sitzungszimmer" itemValue="1" />
 						<f:selectItem itemLabel="Showroom" itemValue="2" />
 						<f:selectItem itemLabel="Veranstaltungsraum" itemValue="3" />
@@ -135,7 +135,7 @@
 					<p:outputLabel for="raumgroesse" value="Raumgrösse: " />
 				</div>
 				<div class="col-md-2">
-					<p:selectOneListbox id="raumgroesse" value="#{frontendManager.raum.groesse}" required="true" style="width:260px">
+					<p:selectOneListbox id="raumgroesse" value="#{frontendManager.resData.raumGroesse}" required="true" style="width:260px">
 						<f:selectItem itemLabel="1-5 Personen" itemValue="1-5 Personen" />
 						<f:selectItem itemLabel="5-10 Personen" itemValue="5-10 Personen" />
 						<f:selectItem itemLabel="10-15 Personen" itemValue="10-15 Personen" />

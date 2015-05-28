@@ -1,10 +1,13 @@
 package controller;
 
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
+import business.ReservationData;
 import business.ReservationManagerBean;
 import entities.Nutzungskategorie;
 import entities.Raum;
@@ -14,22 +17,22 @@ import entities.Reservation;
 @RequestScoped
 public class FrontendManager {
 	
-	private Reservation reservation = new Reservation();
-	private Raum raum = new Raum();
-	private Nutzungskategorie nutzungskategorie = new Nutzungskategorie();
+	private ReservationData resData= new ReservationData();
 
 	@EJB
 	ReservationManagerBean bean;
 	
 	public String searchRooms(){
 		System.out.println("methode searchRooms() aufgerufen");
-		System.out.println(raum.getGroesse());
-		System.out.println(nutzungskategorie.getBezeichnung());
-		//System.out.println(reservation.getReserviertVon());
-		//System.out.println(reservation.getReserviertBis());
-		
+		bean.storeData(resData);
+		System.out.println("methode searchRooms() beendet");
 		return "available.xhtml";
-		//bean.availableRooms(raum);
+		
+	}
+	
+	public List <Raum> getAvailableRooms(){
+		System.out.println("frontendmanager getRaumGroesse() aufgerufen");
+		return bean.availableRooms();
 	}
 	
 	public void checkEmployeeName (){
@@ -39,37 +42,24 @@ public class FrontendManager {
 	
 	public void store(){
 		System.out.println("gespeichert");
-		bean.addReservation(reservation);
-	}
-	
-	
-
-	public Reservation getReservation() {
-		return reservation;
+		//bean.addReservation(reservation);
 	}
 
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
-	}
-
-	public Raum getRaum() {
-		return raum;
-	}
-
-	public void setRaum(Raum raum) {
-		this.raum = raum;
-	}
 	
 	
 	
-
-	public Nutzungskategorie getNutzungskategorie() {
-		return nutzungskategorie;
+	
+	
+	
+	public ReservationData getResData() {
+		return resData;
 	}
 
-	public void setNutzungskategorie(Nutzungskategorie nutzungskategorie) {
-		this.nutzungskategorie = nutzungskategorie;
+	public void setResData(ReservationData resData) {
+		this.resData = resData;
 	}
+	
+	
 
 	
 }

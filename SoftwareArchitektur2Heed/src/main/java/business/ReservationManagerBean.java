@@ -3,24 +3,40 @@ package business;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 
 import entities.Raum;
 import entities.Reservation;
 
-@Stateless
+@Stateful
 @Named
 public class ReservationManagerBean {
 	
 	@PersistenceContext(unitName = "primary")
 	EntityManager em;
 	
+	private ReservationData data = new ReservationData ();
 	
-	public void availableRooms(Raum raum){
+	
+	public void storeData(ReservationData resData){
+		data.setDatumBis(resData.getDatumBis());
+		data.setDatumVon(resData.getDatumVon());
+		data.setRaumGroesse(resData.getRaumGroesse());
+		System.out.println("Methode availableRooms aufgerufen");
+	}
+	
+	
+	public List<Raum> availableRooms(){
+		String statement = "select r from Raum r";
+		Query query = em.createQuery(statement);
+		List <Raum> list =query.getResultList();
+		//System.out.println(data.getRooms().get(0).getBezeichnung());
+		return list;
 		
 	}
 	
@@ -29,14 +45,6 @@ public class ReservationManagerBean {
 		em.persist(entity);
 	}
 	
-	public List<String> getReservations(){
-		List <String> res = new ArrayList <String>();
-		TypedQuery<Reservation> query = em.createNamedQuery(Reservation.findAll, Reservation.class);
-		List <Reservation> resultat = query.getResultList();
-		for (Reservation entity : resultat){
-			//res.add(entity.getDay());
-		}
-		return res;
-	}
+	
 
 }
