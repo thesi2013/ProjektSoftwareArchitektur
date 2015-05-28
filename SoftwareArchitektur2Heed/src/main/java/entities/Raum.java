@@ -22,7 +22,7 @@ public class Raum implements Serializable {
 	private int idRaum;
 	
 	@OneToOne
-	@JoinColumn(name = "idGebaude")
+	@JoinColumn(name = "idGebaeude")
 	private Gebaeude gebaeude;
 	
 	@OneToOne

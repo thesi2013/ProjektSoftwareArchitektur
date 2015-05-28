@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -17,15 +16,19 @@ public class FrontendManager {
 	
 	private Reservation reservation = new Reservation();
 	private Raum raum = new Raum();
-	private Nutzungskategorie kategorie = new Nutzungskategorie();
+	private Nutzungskategorie nutzungskategorie = new Nutzungskategorie();
 
 	@EJB
 	ReservationManagerBean bean;
 	
-	public void searchRooms(){
+	public String searchRooms(){
 		System.out.println("methode searchRooms() aufgerufen");
 		System.out.println(raum.getGroesse());
-		System.out.println(kategorie.getKategorie());
+		System.out.println(nutzungskategorie.getBezeichnung());
+		//System.out.println(reservation.getReserviertVon());
+		//System.out.println(reservation.getReserviertBis());
+		
+		return "available.xhtml";
 		//bean.availableRooms(raum);
 	}
 	
@@ -39,16 +42,14 @@ public class FrontendManager {
 		bean.addReservation(reservation);
 	}
 	
-	public List <String> getReservation(){
-		return bean.getReservations();
-	}
+	
 
-	public Reservation getEntity() {
+	public Reservation getReservation() {
 		return reservation;
 	}
 
-	public void setEntity(Reservation entity) {
-		this.reservation = entity;
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
 	}
 
 	public Raum getRaum() {
@@ -58,19 +59,17 @@ public class FrontendManager {
 	public void setRaum(Raum raum) {
 		this.raum = raum;
 	}
-
-
-
-	public Nutzungskategorie getKategorie() {
-		return kategorie;
-	}
-
-
-
-	public void setKategorie(Nutzungskategorie kategorie) {
-		this.kategorie = kategorie;
-	}
+	
 	
 	
 
+	public Nutzungskategorie getNutzungskategorie() {
+		return nutzungskategorie;
+	}
+
+	public void setNutzungskategorie(Nutzungskategorie nutzungskategorie) {
+		this.nutzungskategorie = nutzungskategorie;
+	}
+
+	
 }

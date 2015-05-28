@@ -80,14 +80,14 @@
 					<p:outputLabel for="dateFrom" value="Datum von:" />
 				</div>
 				<div class="col-md-2">				
-				<p:calendar id="dateFrom" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de"/><!--   value="#{calendarView.date10}" -->
+				<p:calendar id="dateFrom" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de"/>
 				</div>
 				
 					<div class="col-md-2 col-md-offset-1">
 					<p:outputLabel for="dateTo" value="Datum bis:" />
 				</div>
 				<div class="col-md-2">				
-				<p:calendar id="dateTo" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de"/><!--   value="#{calendarView.date10}" -->
+				<p:calendar id="dateTo" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de" />
 				</div>
 			</div>
 			
@@ -118,7 +118,7 @@
 					<p:outputLabel for="raumart" value="Raumart:" />
 				</div>
 				<div class="col-md-2">
-					<p:selectOneListbox id="raumart" value="#{frontendManager.kategorie.kategorie}" required="true" style="width:260px">
+					<p:selectOneListbox id="raumart" value="#{frontendManager.nutzungskategorie.bezeichnung}" required="true" style="width:260px">
 						<f:selectItem itemLabel="Sitzungszimmer" itemValue="1" />
 						<f:selectItem itemLabel="Showroom" itemValue="2" />
 						<f:selectItem itemLabel="Veranstaltungsraum" itemValue="3" />
