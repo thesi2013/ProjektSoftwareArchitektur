@@ -26,6 +26,8 @@ public class FrontendManager {
 	
 	public String searchRooms(){
 		System.out.println("methode searchRooms() aufgerufen");
+		System.out.println("VON: " + resData.getDatumVon());
+		System.out.println("BIS: " + resData.getDatumBis());
 		bean.storeData(resData);
 		System.out.println("methode searchRooms() beendet");
 		return "available.xhtml";
