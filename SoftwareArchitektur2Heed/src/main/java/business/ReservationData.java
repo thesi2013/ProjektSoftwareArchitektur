@@ -1,5 +1,6 @@
 package business;
 
+import java.sql.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,8 +8,8 @@ import entities.Raum;
 
 public class ReservationData {
 	
-	private String datumVon;
-	private String datumBis;
+	private Date datumVon;
+	private Date datumBis;
 	private String raumGroesse;
 	private int nutzungskateID;
 	private List <Raum> rooms = new LinkedList <Raum>();
@@ -18,16 +19,17 @@ public class ReservationData {
 	
 	
 	
-	public String getDatumVon() {
+
+	public Date getDatumVon() {
 		return datumVon;
 	}
-	public void setDatumVon(String datumVon) {
+	public void setDatumVon(Date datumVon) {
 		this.datumVon = datumVon;
 	}
-	public String getDatumBis() {
+	public Date getDatumBis() {
 		return datumBis;
 	}
-	public void setDatumBis(String datumBis) {
+	public void setDatumBis(Date datumBis) {
 		this.datumBis = datumBis;
 	}
 	public List<Raum> getRooms() {
