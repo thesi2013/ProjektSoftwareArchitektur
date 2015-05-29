@@ -1,6 +1,8 @@
 package controller;
 
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -70,6 +72,15 @@ public class FrontendManager {
 
 	public void setEmployeData(EmployeeTO employeData) {
 		this.employeeData = employeData;
+	}
+	
+	
+	public Date getMinDate() {
+		
+		Calendar c = Calendar.getInstance();
+		int diffToAdd = 15 - (c.getTime().getMinutes() % 15);
+		c.add(Calendar.MINUTE, diffToAdd);		
+		return c.getTime();
 	}
 	
 	

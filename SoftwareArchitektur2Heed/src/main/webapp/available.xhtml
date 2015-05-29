@@ -37,7 +37,12 @@
 	</nav>
 
 	<div class="col-md-12">
-		<h1>Raumreservation für "getSelectedDate"</h1>
+				VON: <h:outputText value="#{frontendManager.resData.datumVon}">
+				<f:convertDateTime pattern="dd.MM.yyyy HH:mm" timeZone="GMT+2"/>
+			</h:outputText>
+			BIS:<h:outputText value="#{frontendManager.resData.datumBis}">
+				<f:convertDateTime pattern="dd.MM.yyyy HH:mm" timeZone="GMT+2"/>
+			</h:outputText>
 		<br></br>
 		
 		<!--  <h:dataTable var= "room" value="#{frontendManager.availableRooms}">
