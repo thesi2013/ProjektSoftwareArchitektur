@@ -80,14 +80,14 @@
 					<p:outputLabel for="dateFrom" value="Datum von:" />
 				</div>
 				<div class="col-md-2">				
-				<p:calendar id="dateFrom" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de"/>
+				<p:calendar id="dateFrom" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de" value="#{frontendManager.resData.datumVon}"/>
 				</div>
 				
 					<div class="col-md-2 col-md-offset-1">
 					<p:outputLabel for="dateTo" value="Datum bis:" />
 				</div>
 				<div class="col-md-2">				
-				<p:calendar id="dateTo" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de" />
+				<p:calendar id="dateTo" pattern="dd-MM-yyyy HH:mm" stepMinute="15" readonlyInput="true" required="true" styleClass="dateTimeField" locale="de" value="#{frontendManager.resData.datumBis}" />
 				</div>
 			</div>
 			
