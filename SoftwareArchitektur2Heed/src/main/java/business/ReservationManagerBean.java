@@ -30,7 +30,7 @@ public class ReservationManagerBean {
 	EntityManager em;
 	
 	private ReservationData data = new ReservationData ();
-	
+	private Reservation reservation = new Reservation();
 	
 	public void storeData(ReservationData resData){
 		data.setDatumBis(resData.getDatumBis());
@@ -97,10 +97,13 @@ public class ReservationManagerBean {
 	
 	public void addReservation(int employeeID){
 		System.out.println("hinzugefügt");
-		Reservation reservation = new Reservation();
 		reservation.setIdMitarbeiter(employeeID);
-		//reservation.setRaum(data.);
-		//em.persist(entity);
+		reservation.setReserviertBis(data.getDatumBis());
+		reservation.setReserviertVon(data.getDatumVon());
+		Raum testraum = new Raum();
+		testraum.setIdRaum(1);
+		reservation.setRaum(testraum);
+		em.persist(reservation);
 	}
 	
 	

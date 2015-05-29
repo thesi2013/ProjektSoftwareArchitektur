@@ -51,7 +51,7 @@ public class FrontendManager {
 		System.out.println("gespeichert");
 		System.out.println(employeeData.getId());
 		System.out.println(resData.getIdentifyRoom().getBezeichnung());
-		//bean.addReservation(employeeData.getId());
+		bean.addReservation(employeeData.getId());
 		return "confirmation.xhtml";
 	}
 
