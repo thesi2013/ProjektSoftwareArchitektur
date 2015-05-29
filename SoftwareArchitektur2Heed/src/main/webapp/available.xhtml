@@ -40,7 +40,7 @@
 		<h1>Raumreservation für "getSelectedDate"</h1>
 		<br></br>
 		
-		<h:dataTable var= "room" value="#{frontendManager.availableRooms}">
+		<!--  <h:dataTable var= "room" value="#{frontendManager.availableRooms}">
 			<h:column>
 				<f:facet name="header">RaumID</f:facet>
 				<div>#{room.idRaum}</div>
@@ -53,14 +53,17 @@
 				<f:facet name="header">Raumgrösse</f:facet>
 				<div>#{room.groesse}</div>
 			</h:column>
-		</h:dataTable>
+		</h:dataTable>-->
 		
 		
 		
 		
 		
 		<h:form id="form">
-
+		
+		<h:selectOneMenu value="#{frontendManager.resData.identifyRoom}">
+		<f:selectItems value="#{frontendManager.availableRooms}" var="room" itemValue="#{room}" itemLabel ="#{room.bezeichnung}"/>
+		</h:selectOneMenu> 
 			
 
 		<h:selectOneMenu value="#{frontendManager.employeData.id}">
