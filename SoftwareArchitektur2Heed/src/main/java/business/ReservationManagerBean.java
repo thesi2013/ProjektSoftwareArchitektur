@@ -36,6 +36,9 @@ public class ReservationManagerBean {
 		data.setDatumBis(resData.getDatumBis());
 		data.setDatumVon(resData.getDatumVon());
 		data.setRaumGroesse(resData.getRaumGroesse());
+		data.setDatumVon(resData.getDatumVon());
+		data.setDatumBis(resData.getDatumBis());
+		System.out.println(data.getDatumBis());
 		System.out.println("Methode availableRooms aufgerufen");
 	}
 	
@@ -59,9 +62,7 @@ public class ReservationManagerBean {
 	
 	
 	public List<EmployeeTO> loadEmployeeName(){
-			
-			List <EmployeeTO> employees = new LinkedList <EmployeeTO>();
-			
+		List <EmployeeTO> employees = new LinkedList <EmployeeTO>();
 			try {
 				ClientRequest request = new ClientRequest("http://employeemanager-esaeservice.rhcloud.com/rs/Employees");
 				//request.accept("application/json");
@@ -96,6 +97,9 @@ public class ReservationManagerBean {
 	
 	public void addReservation(int employeeID){
 		System.out.println("hinzugefügt");
+		Reservation reservation = new Reservation();
+		reservation.setIdMitarbeiter(employeeID);
+		//reservation.setRaum(data.);
 		//em.persist(entity);
 	}
 	

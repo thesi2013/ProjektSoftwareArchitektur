@@ -12,7 +12,10 @@ public class ReservationData {
 	private String raumGroesse;
 	private int nutzungskateID;
 	private List <Raum> rooms = new LinkedList <Raum>();
+	private Raum identifyRoom = new Raum();
 	private int employeeID;
+	
+	
 	
 	
 	public String getDatumVon() {
@@ -50,6 +53,12 @@ public class ReservationData {
 	}
 	public void setEmployeeID(int employeeID) {
 		this.employeeID = employeeID;
+	}
+	public Raum getIdentifyRoom() {
+		return identifyRoom;
+	}
+	public void setIdentifyRoom(Raum identifyRoom) {
+		this.identifyRoom = identifyRoom;
 	}
 	
 	
