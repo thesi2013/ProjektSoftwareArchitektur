@@ -19,6 +19,7 @@ public class Raum implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition="TINYINT(8)")
 	private int idRaum;
 	
 	@OneToOne

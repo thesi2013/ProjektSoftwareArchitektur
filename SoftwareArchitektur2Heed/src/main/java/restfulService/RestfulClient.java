@@ -3,6 +3,7 @@ package restfulService;
 
 import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.jboss.resteasy.client.ClientRequest;
@@ -13,8 +14,9 @@ import org.jboss.resteasy.util.GenericType;
 public class RestfulClient {
 
 	@SuppressWarnings("deprecation")
-	public static void main(String[] args) {
+	public List<EmployeeTO> loadEmployees() {
 		
+		List <EmployeeTO> employees = new LinkedList <EmployeeTO>();
 		
 		try {
 			ClientRequest request = new ClientRequest("http://employeemanager-esaeservice.rhcloud.com/rs/Employees");
@@ -29,7 +31,7 @@ public class RestfulClient {
 			
 			System.out.println ("laden funktioniert!");
 			
-			List <EmployeeTO> employees = response.getEntity();			
+			employees = response.getEntity();			
 			
 			Iterator <EmployeeTO> iter = employees.iterator();
 			while (iter.hasNext()){
@@ -41,6 +43,8 @@ public class RestfulClient {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
+		
+		return employees;
 		
 	}
 }

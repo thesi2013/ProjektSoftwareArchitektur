@@ -25,12 +25,14 @@ public class Reservation implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition="TINYINT(8)")
 	private int idReservation;
 	
 	@OneToOne
 	@JoinColumn(name = "idRaum")
 	private Raum raum;
 	
+	@Column(columnDefinition="TINYINT(8)")
 	private int idMitarbeiter;
 	
 	@Temporal(TemporalType.TIMESTAMP)

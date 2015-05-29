@@ -17,7 +17,8 @@ public class Gebaeude implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idGebaeude;
+	@Column(columnDefinition="TINYINT(8)")
+	private Integer idGebaeude;
 	
 	@Column
 	private String name;
@@ -34,8 +35,8 @@ public class Gebaeude implements Serializable {
 	@Column
 	private String ort;
 	
-	@OneToOne(mappedBy ="gebaeude")
-	private Raum raum;
+	/*@OneToOne(mappedBy ="gebaeude")
+	private Raum raum;*/
 
 	
 	

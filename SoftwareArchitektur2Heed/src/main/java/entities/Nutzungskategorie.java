@@ -17,13 +17,14 @@ public class Nutzungskategorie implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition="TINYINT(8)")
 	private int idNutzungskategorie;
 	
 	@Column
 	private String bezeichnung;
 	
-	@OneToOne(mappedBy ="nutzungskategorie")
-	private Raum raum;
+	/*@OneToOne(mappedBy ="nutzungskategorie")
+	private Raum raum;*/
 
 	
 	

@@ -12,6 +12,7 @@ public class ReservationData {
 	private String raumGroesse;
 	private int nutzungskateID;
 	private List <Raum> rooms = new LinkedList <Raum>();
+	private int employeeID;
 	
 	
 	public String getDatumVon() {
@@ -43,6 +44,12 @@ public class ReservationData {
 	}
 	public void setNutzungskateID(int nutzungskateID) {
 		this.nutzungskateID = nutzungskateID;
+	}
+	public int getEmployeeID() {
+		return employeeID;
+	}
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
 	}
 	
 	

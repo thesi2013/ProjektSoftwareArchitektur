@@ -57,68 +57,17 @@
 		
 		
 		
+		
+		
 		<h:form id="form">
 
-			<!--  <div class="row">
-				<div class="col-md-1">
-					<p:outputLabel for="gebaeude" value="verfügbare Gebäude:" />
-				</div>
-				<div class="col-md-3">
-					<p:selectOneListbox id="gebaeude"
-						value="" style="width:260px">
-						<f:selectItem itemLabel="A" itemValue="A" />
-						<f:selectItem itemLabel="B" itemValue="B" />
-						<f:selectItem itemLabel="C" itemValue="C" />
-						<f:selectItem itemLabel="D" itemValue="D" />
-						<f:selectItem itemLabel="E" itemValue="E" />
-					</p:selectOneListbox>
-				</div>
-			</div>
+			
 
-			<br />
-
-			<div class="row">
-				<div class="col-md-1">
-					<p:outputLabel for="verfRaum" value="verfügbare Räume:" />
-				</div>
-				<div class="col-md-3">
-					<p:selectOneListbox id="verfRaum"
-						value="" style="width:260px">
-						<f:selectItem itemLabel="A 0" itemValue="A" />
-						<f:selectItem itemLabel="A 1" itemValue="A" />
-						<f:selectItem itemLabel="A 2" itemValue="A" />
-						<f:selectItem itemLabel="A 3" itemValue="A" />
-						<f:selectItem itemLabel="A 4" itemValue="A" />
-					</p:selectOneListbox>
-				</div>
-			</div>-->
-
-			<br />
-			<br />
-
-			<div class="row">
-				<div class="col-md-1">
-					<p:outputLabel for="vorname" value="Vorname: " />
-				</div>
-				<div class="col-md-2">
-					<p:inputText id="vorname" style="width:260px" />
-				</div>
-			</div>
-
-			<br />
-
-			<div class="row">
-				<div class="col-md-1">
-					<p:outputLabel for="nachname" value="Nachname: " />
-				</div>
-				<div class="col-md-2">
-					<p:inputText id="nachname" style="width:260px" />
-				</div>
-			</div>
-			<br />
-			<br />
-
-
+		<h:selectOneMenu value="#{frontendManager.employeData.id}">
+		<f:selectItems value="#{frontendManager.checkEmployeeName}" var="employee" itemValue="#{employee.id}" itemLabel ="#{employee.firstname}"/>
+		</h:selectOneMenu>
+		
+		
 		<!-- Button trigger modal -->
 <button class="col-md-offset-1 btn btn-primary" type="button"  data-toggle="modal" data-target="#myModal" style="width:250px">
   Buchung bestätigen
@@ -137,7 +86,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" value="Nein" class="btn btn-danger" data-dismiss="modal">Nein</button>
-        <p:commandButton type="button" value="Ja" class="btn btn-primary" action = "#{frontendManager.checkEmployeeName()}"></p:commandButton>
+        <p:commandButton value="Ja" class="btn btn-primary" action = "#{frontendManager.store()}"></p:commandButton>
         
         
         

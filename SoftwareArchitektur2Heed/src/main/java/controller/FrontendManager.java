@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
+import restfulService.EmployeeTO;
 import business.ReservationData;
 import business.ReservationManagerBean;
 import entities.Nutzungskategorie;
@@ -18,6 +19,7 @@ import entities.Reservation;
 public class FrontendManager {
 	
 	private ReservationData resData= new ReservationData();
+	private EmployeeTO employeeData = new EmployeeTO();
 
 	@EJB
 	ReservationManagerBean bean;
@@ -35,19 +37,19 @@ public class FrontendManager {
 		return bean.availableRooms();
 	}
 	
-	public void checkEmployeeName (){
+	public List<EmployeeTO> getCheckEmployeeName(){
 		System.out.println("Methode checkEmployeeName() aufgerufen");
+		return bean.loadEmployeeName();
 	}
 	
 	
-	public void store(){
+	public String store(){
 		System.out.println("gespeichert");
-		//bean.addReservation(reservation);
+		System.out.println(employeeData.getId());
+		bean.addReservation(employeeData.getId());
+		return "confirmation.xhtml";
 	}
 
-	
-	
-	
 	
 	
 	
@@ -57,6 +59,14 @@ public class FrontendManager {
 
 	public void setResData(ReservationData resData) {
 		this.resData = resData;
+	}
+
+	public EmployeeTO getEmployeData() {
+		return employeeData;
+	}
+
+	public void setEmployeData(EmployeeTO employeData) {
+		this.employeeData = employeData;
 	}
 	
 	
