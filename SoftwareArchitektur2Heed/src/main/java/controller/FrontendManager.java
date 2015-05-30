@@ -49,13 +49,13 @@ public class FrontendManager {
 	
 	public String store(){
 		System.out.println("FEM - store() aufgerufen");
-		System.out.println("Mitarbeiter Nummer" + employeeData.getId() + "ausgewählt.");
-		resData.setEmployeeID(employeeData.getId());
+		System.out.println("Mitarbeiter Nummer " + employeeData.getId() + " ausgewählt.");
+//		resData.setEmployeeID(employeeData.getId());
 //		System.out.println(resData.getIdentifyRoom().getBezeichnung());
 //		bean.addReservation(employeeData.getId());
 //		System.out.println(resData.getDatumVon());
 //		System.out.println(resData.getDatumBis());
-		bean.storeData(resData);
+		bean.addReservation(employeeData.getId());
 		return "confirmation.xhtml";
 	}
 

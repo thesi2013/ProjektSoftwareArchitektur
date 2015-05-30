@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,20 +30,23 @@ public class ReservationManagerBean {
 	@PersistenceContext(unitName = "primary")
 	EntityManager em;
 	
+	@Inject
 	private ReservationData data = new ReservationData ();
+	@Inject
 	private Reservation reservation = new Reservation();
 	
 	public void storeData(ReservationData resData){
 		System.out.println("RMB - storeData() aufgerufen!");
-		data.setEmployeeID(resData.getEmployeeID());
+//		data.setEmployeeID(resData.getEmployeeID());
 		data.setRaumGroesse(resData.getRaumGroesse());
 		data.setDatumVon(resData.getDatumVon());
 		data.setDatumBis(resData.getDatumBis());
-//		System.out.println(resData.getDatumVon());
-//		System.out.println(resData.getDatumBis());
-//		System.out.println(data.getDatumVon());
-//		System.out.println(data.getDatumBis());
-		this.addReservation();
+		System.out.println("Zeit: ");
+		System.out.println(resData.getDatumVon());
+		System.out.println(resData.getDatumBis());
+		System.out.println(data.getDatumVon());
+		System.out.println(data.getDatumBis());
+//		this.addReservation();
 	}
 	
 	
@@ -97,8 +101,11 @@ public class ReservationManagerBean {
 	
 	
 	
-	public void addReservation(){
-		reservation.setIdMitarbeiter(data.getEmployeeID());
+	public void addReservation(int employeeId){
+		System.out.println("Zeit: ");
+		System.out.println(data.getDatumVon());
+		System.out.println(data.getDatumBis());
+		reservation.setIdMitarbeiter(employeeId);
 		reservation.setReserviertBis(data.getDatumBis());
 		reservation.setReserviertVon(data.getDatumVon());
 //		Raum testraum = new Raum();
