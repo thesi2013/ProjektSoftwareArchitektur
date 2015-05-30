@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,17 +30,23 @@ public class ReservationManagerBean {
 	@PersistenceContext(unitName = "primary")
 	EntityManager em;
 	
+	@Inject
 	private ReservationData data = new ReservationData ();
+	@Inject
 	private Reservation reservation = new Reservation();
 	
 	public void storeData(ReservationData resData){
-		data.setDatumBis(resData.getDatumBis());
-		data.setDatumVon(resData.getDatumVon());
+		System.out.println("RMB - storeData() aufgerufen!");
+//		data.setEmployeeID(resData.getEmployeeID());
 		data.setRaumGroesse(resData.getRaumGroesse());
 		data.setDatumVon(resData.getDatumVon());
 		data.setDatumBis(resData.getDatumBis());
+		System.out.println("Zeit: ");
+		System.out.println(resData.getDatumVon());
+		System.out.println(resData.getDatumBis());
+		System.out.println(data.getDatumVon());
 		System.out.println(data.getDatumBis());
-		System.out.println("Methode availableRooms aufgerufen");
+//		this.addReservation();
 	}
 	
 	
@@ -74,7 +81,7 @@ public class ReservationManagerBean {
 							+ response.getStatus());
 				}		
 				
-				System.out.println ("laden funktioniert!");
+				
 				
 				employees = response.getEntity();			
 				
@@ -88,22 +95,24 @@ public class ReservationManagerBean {
 				catch (Exception e) {
 					e.printStackTrace();
 				}
-			
-			return employees;
-			
+			System.out.println ("RMB - Mitarbeiter geladen");
+			return employees;			
 		}
 	
 	
 	
-	public void addReservation(int employeeID){
-		System.out.println("hinzugefügt");
-		reservation.setIdMitarbeiter(employeeID);
+	public void addReservation(int employeeId){
+		System.out.println("Zeit: ");
+		System.out.println(data.getDatumVon());
+		System.out.println(data.getDatumBis());
+		reservation.setIdMitarbeiter(employeeId);
 		reservation.setReserviertBis(data.getDatumBis());
 		reservation.setReserviertVon(data.getDatumVon());
-		Raum testraum = new Raum();
-		testraum.setIdRaum(1);
-		reservation.setRaum(testraum);
+//		Raum testraum = new Raum();
+//		testraum.setIdRaum(1);
+//		reservation.setRaum(testraum);
 		em.persist(reservation);
+		System.out.println("RMB - Reservation hinzugefügt");
 	}
 	
 	
