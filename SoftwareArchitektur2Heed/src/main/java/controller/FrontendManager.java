@@ -27,31 +27,35 @@ public class FrontendManager {
 	ReservationManagerBean bean;
 	
 	public String searchRooms(){
-		System.out.println("methode searchRooms() aufgerufen");
+		System.out.println("FEM - searchRooms() aufgerufen");
 		System.out.println("VON: " + resData.getDatumVon());
 		System.out.println("BIS: " + resData.getDatumBis());
 		bean.storeData(resData);
-		System.out.println("methode searchRooms() beendet");
+		System.out.println("FEM - searchRooms() beendet");
 		return "available.xhtml";
 		
 	}
 	
 	public List <Raum> getAvailableRooms(){
-		System.out.println("frontendmanager getRaumGroesse() aufgerufen");
+		System.out.println("FEM - getRaumGroesse() aufgerufen");
 		return bean.availableRooms();
 	}
 	
 	public List<EmployeeTO> getCheckEmployeeName(){
-		System.out.println("Methode checkEmployeeName() aufgerufen");
+		System.out.println("FEM - getCheckEmployeeName() aufgerufen");
 		return bean.loadEmployeeName();
 	}
 	
 	
 	public String store(){
-		System.out.println("gespeichert");
-		System.out.println(employeeData.getId());
-		System.out.println(resData.getIdentifyRoom().getBezeichnung());
-		bean.addReservation(employeeData.getId());
+		System.out.println("FEM - store() aufgerufen");
+		System.out.println("Mitarbeiter Nummer" + employeeData.getId() + "ausgewählt.");
+		resData.setEmployeeID(employeeData.getId());
+//		System.out.println(resData.getIdentifyRoom().getBezeichnung());
+//		bean.addReservation(employeeData.getId());
+//		System.out.println(resData.getDatumVon());
+//		System.out.println(resData.getDatumBis());
+		bean.storeData(resData);
 		return "confirmation.xhtml";
 	}
 
