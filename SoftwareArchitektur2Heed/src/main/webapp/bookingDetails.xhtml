@@ -24,110 +24,80 @@
 </ul>
 </nav>
 
-	<div class="col-md-12">
 	<h1>Buchung bearbeiten"</h1>
 	<br></br>
 	
-	<p:outputLabel value="Guten Tag, getVorname getNachname" />
+	<h:outputText value="Guten Tag, getVorname getNachname" />
 	<br></br>
-	<p:outputLabel value="Hier können Sie Ihre Reservationen verwalten." />
+	<h:outputText value="Hier können Sie Ihre Reservationen verwalten." />
 	<br></br>
 	<br></br>
 
 	<h:form id="form">
 
-			<div class="row">
-			<div class="col-md-1">
-			<p:outputLabel for="details" value="Ihre Reservationen:" />
-			</div>
-			<div class="col-md-3">
-			
-			<!-- TODO: Daten aus Datenbank ziehen -->
-			<p:selectOneListbox id="details" value="#{selectOneMenuView.details}" style="width:250px">
-				<f:selectItem itemLabel="A" itemValue="A" />
-				<f:selectItem itemLabel="B" itemValue="B" />
-				<f:selectItem itemLabel="C" itemValue="C" />
-				<f:selectItem itemLabel="D" itemValue="D" />
-				<f:selectItem itemLabel="E" itemValue="E" />
-			</p:selectOneListbox>
-			</div>
-			</div>
-			<br/>
-			<br/>
+					
 			
 			<!-- TODO: Daten aus Datenbank ziehen -->
 			
-			<div class="row">
-			<div class="col-md-4">
-			<table class="table table-hover">
-			<THEAD>
-				<tr>
-				<td>Gebäude</td>
-				<td>Raumart</td>
-				<td>Raumnummer</td>
-				<td>Datum</td>
-				<td>Uhrzeit</td>
-				</tr>
-			</THEAD>
-			<TBODY>
-			<tr>
-				<td>A</td>
-				<td>Aula</td>
-				<td>101</td>
-				<td>12.3.2014</td>
-				<td>12:00</td>
-			</tr>
-			</TBODY>
-			</table>
-			</div>
-			</div>
-
-		<br></br>
-		<br></br>
+			<p:dataTable  id="test" var="bookingInfo" value="#{frontendManager.allReservations}" editable="true" style="margin-bottom:20px">
+      			 <f:facet name="header">
+           			Ihre Reservationen
+       			</f:facet>
+       			
+       			
+       			<p:ajax event="rowEdit" listener="#{frontendManager.onRowEdit()}" />
+       			<p:ajax event="rowEditCancel" listener="#{frontendManager.onRowCancel()}" />
+       			 
+       			 
+       		<p:column headerText="ID Reservation:">
+           			<p:cellEditor>
+               			<f:facet name="output"><h:outputText value="#{bookingInfo.idReservation}" /></f:facet>
+               			<f:facet name="input"><p:inputText id="modelInput" value="##{bookingInfo.idReservation}" style="width:100%"/></f:facet>
+           			</p:cellEditor>
+       		</p:column>
+       		
+       		<p:column headerText="ID Mitarbeiter:">
+           		<p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{bookingInfo.idMitarbeiter}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{bookingInfo.idMitarbeiter}" style="width:100%" label="Year"/></f:facet>
+           		</p:cellEditor>
+    		 </p:column>
+    		 
+    		 <p:column headerText="Reserviert von:">
+           		<p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{bookingInfo.reserviertVon}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{bookingInfo.reserviertVon}" style="width:100%" label="Year"/></f:facet>
+           		</p:cellEditor>
+    		 </p:column>
+    		 
+    		 <p:column headerText="Reserviert bis:">
+           		<p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{bookingInfo.reserviertBis}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{bookingInfo.reserviertBis}" style="width:100%" label="Year"/></f:facet>
+           		</p:cellEditor>
+    		 </p:column>
+    		 
+    		 <p:column headerText="Raumdetails:">
+           		<p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{bookingInfo.raum.bezeichnung}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{bookingInfo.raum.bezeichnung}" style="width:100%" label="Year"/></f:facet>
+           		</p:cellEditor>
+    		 </p:column>
+    		 
+    		 <p:column style="width:32px">
+           		<p:rowEditor />
+       		</p:column>
+       		       			 
+       		</p:dataTable>
+       		      		
+       		<p:contextMenu for="test" widgetVar="cMenu">   
+       			<p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
+       			<p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
+   			</p:contextMenu>
 		
-				<!-- Button trigger modal -->
-<button class="col-md-offset-1 btn btn-primary" type="button"  data-toggle="modal" data-target="#myModal" style="width:250px">
-  Löschen
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-          <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-        <h4 class="modal-title" id="myModalLabel">Löschen!</h4>
-      </div>
-      <div class="modal-body">
-        Wollen Sie diesen Eintrag wirklich löschen?
-      </div>
-      <div class="modal-footer">
-        <button type="button" value="Nein" class="btn btn-danger" data-dismiss="modal">Nein</button>
-        <p:commandButton type="button" value="Ja" class="btn btn-primary" onclick="window.location.href='deleteConfirmation.xhtml'"></p:commandButton>
-        
-        
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-		<!-- 
-		<p:growl id="message" showDetail="true" />
-
-		<p:commandButton value="Löschen" actionListener="#{dialogView.loeschen}" update="message">
-			<p:confirm header="Bestätigung!" message="Wollen Sie wirklich löschen?" icon="ui-icon-blank" />
-		</p:commandButton>
-
-		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="300px">
-			<p:commandButton value="Ja" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" onclick="window.location.href='deleteConfirmation.xhtml'"/>
-			<p:commandButton value="Nein" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-		</p:confirmDialog>
-		
-		-->
 
 	</h:form>
-	</div>
+
 
 </h:body>
 </html>

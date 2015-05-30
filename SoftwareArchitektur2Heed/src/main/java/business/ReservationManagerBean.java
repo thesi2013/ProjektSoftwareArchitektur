@@ -115,6 +115,15 @@ public class ReservationManagerBean {
 		System.out.println("RMB - Reservation hinzugefügt");
 	}
 	
+	public List<Reservation> loadAllReservations(){
+		System.out.println("RMB -  loadAllReservations() aufgerufen");
+		List<Reservation> reservations = new LinkedList<Reservation>();
+		TypedQuery<Reservation> query = em.createQuery("SELECT r FROM entities.Reservation r", Reservation.class);
+		reservations =query.getResultList();
+		return reservations;
+		
+	}
+	
 	
 
 }
