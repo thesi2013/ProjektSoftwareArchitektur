@@ -76,8 +76,6 @@ public class FrontendManager implements Serializable {
 	
 	
 	 public String clearObject(){
-		 resData = null;
-		 employeeData = null;
 		 return "booking.xhtml";
 	}
 	
