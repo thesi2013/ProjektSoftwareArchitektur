@@ -46,7 +46,8 @@ public class FrontendManager implements Serializable {
 	
 	public List <Raum> getAvailableRooms(){
 		System.out.println("FEM - getRaumGroesse() aufgerufen");
-		return bean.availableRooms();
+		resData.setRooms(bean.availableRooms());
+		return resData.getRooms();
 	}
 	
 	public List<EmployeeTO> getCheckEmployeeName(){
@@ -59,11 +60,10 @@ public class FrontendManager implements Serializable {
 		System.out.println("FEM - store() aufgerufen");
 		System.out.println("Mitarbeiter Nummer " + employeeData.getId() + " ausgewählt.");
 //		resData.setEmployeeID(employeeData.getId());
-//		System.out.println(resData.getIdentifyRoom().getBezeichnung());
-//		bean.addReservation(employeeData.getId());
+		System.out.println("Raum " + resData.getIdentifyRoom().getIdRaum() + " ausgewählt.");
 //		System.out.println(resData.getDatumVon());
 //		System.out.println(resData.getDatumBis());
-		bean.addReservation(employeeData.getId());
+		bean.addReservation(employeeData.getId(), resData.getIdentifyRoom());
 		return "confirmation.xhtml";
 	}
 
@@ -72,6 +72,13 @@ public class FrontendManager implements Serializable {
 		
 		return bean.loadAllReservations();
 		
+	}
+	
+	
+	 public String clearObject(){
+		 resData = null;
+		 employeeData = null;
+		 return "booking.xhtml";
 	}
 	
 	

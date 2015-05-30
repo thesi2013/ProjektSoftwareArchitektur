@@ -1,6 +1,9 @@
 package business;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,7 +49,6 @@ public class ReservationManagerBean {
 		System.out.println(resData.getDatumBis());
 		System.out.println(data.getDatumVon());
 		System.out.println(data.getDatumBis());
-//		this.addReservation();
 	}
 	
 	
@@ -101,16 +103,14 @@ public class ReservationManagerBean {
 	
 	
 	
-	public void addReservation(int employeeId){
+	public void addReservation(int employeeId, Raum raum){
 		System.out.println("Zeit: ");
 		System.out.println(data.getDatumVon());
 		System.out.println(data.getDatumBis());
 		reservation.setIdMitarbeiter(employeeId);
+		reservation.setRaum(raum);
 		reservation.setReserviertBis(data.getDatumBis());
 		reservation.setReserviertVon(data.getDatumVon());
-//		Raum testraum = new Raum();
-//		testraum.setIdRaum(1);
-//		reservation.setRaum(testraum);
 		em.persist(reservation);
 		System.out.println("RMB - Reservation hinzugefügt");
 	}
