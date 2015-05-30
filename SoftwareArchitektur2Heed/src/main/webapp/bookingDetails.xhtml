@@ -46,13 +46,13 @@
        			
        			
        			<p:ajax event="rowEdit" listener="#{frontendManager.onRowEdit()}" />
-       			<p:ajax event="rowEditCancel" listener="#{frontendManager.onRowCancel()}" />
+       			<!--  <p:ajax event="rowEditCancel" listener="#{frontendManager.onRowCancel()}" />-->
        			 
        			 
        		<p:column headerText="ID Reservation:">
            			<p:cellEditor>
                			<f:facet name="output"><h:outputText value="#{bookingInfo.idReservation}" /></f:facet>
-               			<f:facet name="input"><p:inputText id="modelInput" value="##{bookingInfo.idReservation}" style="width:100%"/></f:facet>
+               			<f:facet name="input"><p:inputText id="modelInput" value="#{bookingInfo.idReservation}" style="width:100%"/></f:facet>
            			</p:cellEditor>
        		</p:column>
        		

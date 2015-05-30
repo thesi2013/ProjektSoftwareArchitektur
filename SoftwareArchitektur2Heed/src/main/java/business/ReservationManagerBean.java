@@ -120,6 +120,12 @@ public class ReservationManagerBean {
 		List<Reservation> reservations = new LinkedList<Reservation>();
 		TypedQuery<Reservation> query = em.createQuery("SELECT r FROM entities.Reservation r", Reservation.class);
 		reservations =query.getResultList();
+		Iterator <Reservation> iter = reservations.iterator();
+		while (iter.hasNext()){
+			System.out.println (iter.next().getReserviertBis());
+		}
+		
+		
 		return reservations;
 		
 	}

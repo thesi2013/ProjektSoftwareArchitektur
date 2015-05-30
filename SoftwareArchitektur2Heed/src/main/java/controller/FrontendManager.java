@@ -29,6 +29,7 @@ public class FrontendManager implements Serializable {
 	
 	private ReservationData resData= new ReservationData();
 	private EmployeeTO employeeData = new EmployeeTO();
+	private Reservation reservationUpdate = new Reservation();
 
 	@EJB
 	ReservationManagerBean bean;
@@ -106,14 +107,15 @@ public class FrontendManager implements Serializable {
 	private static final ArrayList<ReservationData> orderList = new ArrayList<ReservationData>();
 	
 	public void onRowEdit(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Raum editiert", ((ReservationData) event.getObject()).getRaumGroesse());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+		Raum test1 = new Raum();
+		test1.setIdRaum(((Reservation) event.getObject()).getRaum().getIdRaum());
+        System.out.println(test1.getIdRaum());
     }
 	//Added from Sven
 	public void onRowCancel(RowEditEvent event) {  
         FacesMessage msg = new FacesMessage("Item Cancelled");   
         FacesContext.getCurrentInstance().addMessage(null, msg); 
         orderList.remove((ReservationData) event.getObject());
-    } 
+    }
 	
 }
