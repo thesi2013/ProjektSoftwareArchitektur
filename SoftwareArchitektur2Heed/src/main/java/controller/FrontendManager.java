@@ -8,6 +8,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 
 import restfulService.EmployeeTO;
 import business.ReservationData;
@@ -15,10 +16,11 @@ import business.ReservationManagerBean;
 import entities.Nutzungskategorie;
 import entities.Raum;
 import entities.Reservation;
+import java.io.Serializable;
 
 @Named
-@RequestScoped
-public class FrontendManager {
+@SessionScoped
+public class FrontendManager implements Serializable {
 	
 	private ReservationData resData= new ReservationData();
 	private EmployeeTO employeeData = new EmployeeTO();
