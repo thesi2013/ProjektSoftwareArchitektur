@@ -15,6 +15,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
 import org.jboss.resteasy.client.ClientRequest;
@@ -41,6 +42,7 @@ public class ReservationManagerBean {
 	public void storeData(ReservationData resData){
 		System.out.println("RMB - storeData() aufgerufen!");
 //		data.setEmployeeID(resData.getEmployeeID());
+		data.setNutzungskateID(resData.getNutzungskateID());
 		data.setRaumGroesse(resData.getRaumGroesse());
 		data.setDatumVon(resData.getDatumVon());
 		data.setDatumBis(resData.getDatumBis());
@@ -54,7 +56,20 @@ public class ReservationManagerBean {
 	
 	public List<Raum> availableRooms(){
 		
-		TypedQuery<Raum> query = em.createQuery("SELECT r FROM entities.Raum r", Raum.class);
+		System.out.println("RMB - availableRooms() aufgerufen");
+		
+//		TypedQuery<Raum> query = em.createQuery("SELECT r FROM entities.Raum r", Raum.class);
+		
+		
+		TypedQuery<Raum> query = em.createQuery("SELECT r FROM entities.Raum r"
+                + " WHERE (r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE reserviertVon > :startDate AND reserviertVon < :endDate) "
+                + "AND r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE reserviertBis > :startDate AND reserviertBis < :endDate) "
+                + "AND r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE :startDate > reserviertVon AND :startDate < reserviertBis) "
+                + "AND r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE :endDate > reserviertVon AND :endDate < reserviertBis)) "
+                + " AND r.nutzungskategorie = '" + data.getNutzungskateID() + "' AND r.groesse = '" + data.getRaumGroesse() +"' ORDER BY r.idRaum", Raum.class)
+    .setParameter("startDate", data.getDatumVon(), TemporalType.DATE)
+    .setParameter("endDate", data.getDatumBis(), TemporalType.DATE);
+
 		List <Raum> list =query.getResultList();
 		/*System.out.println(data.getRooms().get(0).getBezeichnung());
 		List<Raum> list = new LinkedList<Raum>();
