@@ -60,7 +60,7 @@ public class Controller {
 	public String store(){
 		System.out.println("Controller - store() aufgerufen");
 		System.out.println("Mitarbeiter " + resData.getEmployee().getId() + " ausgewählt.");
-		System.out.println("Raum " + resData.getIdentifyRoom().getIdRaum() + " ausgewählt.");
+		System.out.println("Nutzungskategorie " + resData.getNutzungskateID() + " ausgewählt.");
 		System.out.println("Datum von " + resData.getDatumVon());
 		System.out.println("Datum bis " + resData.getDatumBis());
 		System.out.println("Gebäude " + resData.getGebaeude().getIdGebaeude() + " ausgewählt");
