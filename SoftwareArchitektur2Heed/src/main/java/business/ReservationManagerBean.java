@@ -70,36 +70,36 @@ public class ReservationManagerBean {
 	}
 	
 	
-	public List<EmployeeTO> loadEmployeeName(){
-		List <EmployeeTO> employees = new LinkedList <EmployeeTO>();
-			try {
-				ClientRequest request = new ClientRequest("http://employeemanager-esaeservice.rhcloud.com/rs/Employees");
-				//request.accept("application/json");
-				
-				ClientResponse <List <EmployeeTO>> response = request.get(new GenericType<List<EmployeeTO>>(){}) ;
-				
-				if (response.getStatus() != 200){
-					throw new RuntimeException("Failed : HTTP error code : " 
-							+ response.getStatus());
-				}		
-				
-				
-				
-				employees = response.getEntity();			
-				
-				Iterator <EmployeeTO> iter = employees.iterator();
-				while (iter.hasNext()){
-					System.out.println (iter.next());
-				}
-				
-				
-				}
-				catch (Exception e) {
-					e.printStackTrace();
-				}
-			System.out.println ("RMB - Mitarbeiter geladen");
-			return employees;			
-		}
+//	public List<EmployeeTO> loadEmployeeName(){
+//		List <EmployeeTO> employees = new LinkedList <EmployeeTO>();
+//			try {
+//				ClientRequest request = new ClientRequest("http://employeemanager-esaeservice.rhcloud.com/rs/Employees");
+//				//request.accept("application/json");
+//				
+//				ClientResponse <List <EmployeeTO>> response = request.get(new GenericType<List<EmployeeTO>>(){}) ;
+//				
+//				if (response.getStatus() != 200){
+//					throw new RuntimeException("Failed : HTTP error code : " 
+//							+ response.getStatus());
+//				}		
+//				
+//				
+//				
+//				employees = response.getEntity();			
+//				
+//				Iterator <EmployeeTO> iter = employees.iterator();
+//				while (iter.hasNext()){
+//					System.out.println (iter.next());
+//				}
+//				
+//				
+//				}
+//				catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			System.out.println ("RMB - Mitarbeiter geladen");
+//			return employees;			
+//		}
 	
 	
 	

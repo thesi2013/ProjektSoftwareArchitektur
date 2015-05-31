@@ -50,10 +50,10 @@ public class FrontendManager implements Serializable {
 		return resData.getRooms();
 	}
 	
-	public List<EmployeeTO> getCheckEmployeeName(){
-		System.out.println("FEM - getCheckEmployeeName() aufgerufen");
-		return bean.loadEmployeeName();
-	}
+//	public List<EmployeeTO> getCheckEmployeeName(){
+//		System.out.println("FEM - getCheckEmployeeName() aufgerufen");
+//		return bean.loadEmployeeName();
+//	}
 	
 	
 	public String store(){
