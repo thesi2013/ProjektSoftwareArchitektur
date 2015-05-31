@@ -1,15 +1,13 @@
 package controller;
 
-import java.util.LinkedList;
 import java.util.List;
-
-import business.fetchEmployeesEJB;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import restfulService.EmployeeTO;
+import business.fetchEmployeesEJB;
 
 @Named
 @RequestScoped

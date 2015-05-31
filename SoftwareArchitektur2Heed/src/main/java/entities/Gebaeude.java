@@ -18,7 +18,7 @@ public class Gebaeude implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition="TINYINT(8)")
-	private Integer idGebaeude;
+	private int idGebaeude;
 	
 	@Column
 	private String name;

@@ -1,0 +1,143 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<!-- CSS einbinden-->
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+
+	<!-- Bootstrap einbinden -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</h:head>
+<h:body>
+
+
+	<div class="col-md-12">
+		<h1>Raumreservation</h1>
+		<br /> <br />
+
+		<h:form id="form">
+
+
+			<div class="row">
+				<div class="col-md-2">
+					<p:outputLabel for="dateFrom" value="Datum von:" />
+				</div>
+				<div class="col-md-2">
+					<p:calendar id="dateFrom" pattern="dd-MM-yyyy HH:mm"
+						stepMinute="15" mindate="#{controller.minDate}"
+						readonlyInput="true" required="true" styleClass="dateTimeField"
+						locale="de" value="#{controller.resData.datumVon}" />
+				</div>
+				
+				<br />
+				<br />
+
+				<div class="col-md-2">
+					<p:outputLabel for="dateTo" value="Datum bis:" />
+				</div>
+				<div class="col-md-2">
+					<p:calendar id="dateTo" pattern="dd-MM-yyyy HH:mm" stepMinute="15"
+						mindate="#{controller.minDate}" readonlyInput="true"
+						required="true" styleClass="dateTimeField" locale="de"
+						value="#{controller.resData.datumBis}" />
+				</div>
+			</div>
+
+			<br />
+			<br />
+			<br />
+
+			<div class="row">
+				<div class="col-md-2">
+					<p:outputLabel for="raumart" value="Raumart:" />
+				</div>
+				<div class="col-md-2">
+					<p:selectOneListbox id="raumart"
+						value="#{controller.resData.nutzungskateID}" required="true"
+						style="width:260px">
+						<f:selectItem itemLabel="Sitzungszimmer" itemValue="1" />
+						<f:selectItem itemLabel="Showroom" itemValue="2" />
+						<f:selectItem itemLabel="Veranstaltungsraum" itemValue="3" />
+						<f:selectItem itemLabel="Arbeitsräume" itemValue="4" />
+						<f:selectItem itemLabel="Aula" itemValue="5" />
+					</p:selectOneListbox>
+				</div>
+			</div>
+
+			<br />
+			<br />
+			<br />
+
+			<div class="row">
+				<div class="col-md-2">
+					<p:outputLabel for="raumgroesse" value="Raumgrösse: " />
+				</div>
+				<div class="col-md-2">
+					<p:selectOneListbox id="raumgroesse"
+						value="#{controller.resData.raumGroesse}" required="true"
+						style="width:260px">
+						<f:selectItem itemLabel="1-5 Personen" itemValue="1-5 Personen" />
+						<f:selectItem itemLabel="5-10 Personen" itemValue="5-10 Personen" />
+						<f:selectItem itemLabel="10-15 Personen"
+							itemValue="10-15 Personen" />
+						<f:selectItem itemLabel="15-20 Personen"
+							itemValue="15-20 Personen" />
+						<f:selectItem itemLabel="20+ Personen" itemValue="20+ Personen" />
+					</p:selectOneListbox>
+				</div>
+			</div>
+
+			<br />
+			<br />
+
+<!-- Gebädue -->
+			<div class="row">
+				<div class="col-md-2">
+					<p:outputLabel for="gebaeude" value="Gebäude: " />
+				</div>
+				<div class="col-md-2">
+			<p:selectOneListbox id="gebaeude"
+				value="#{controller.resData.gebaeude.idGebaeude}" required="true"
+						style="width:260px">
+				<f:selectItem itemLabel="Gebäude1 - OVR" itemValue="1" />
+				<f:selectItem itemLabel="Gebäude2 - ORI" itemValue="2" />
+			</p:selectOneListbox>
+			</div>
+			</div>
+
+			<br />
+			<br />
+
+			<div class="row">
+				<div class="col-md-2">
+					<p:outputLabel for="mitarbeiterliste" value="Mitarbeiterliste: " />
+				</div>
+				<div class="col-md-2">
+			<p:selectOneListbox id="mitarbeiterliste" value="#{controller.resData.employee}" required="true"
+						style="width:260px">
+				<f:selectItems value="#{fetchEmployeesController.checkEmployeeName}"
+					var="employee" itemValue="#{employee}"
+					itemLabel="#{employee.firstname} #{employee.lastname}"/>
+			</p:selectOneListbox>
+			</div>
+			</div>
+
+			<br />
+			<br />
+
+
+			<p:commandButton class="col-md-offset-2 btn btn-primary"
+				value="Buchung tätigen"
+				action="#{controller.store()}" style="width:260px"></p:commandButton>
+
+		</h:form>
+	</div>
+
+</h:body>
+</html>
