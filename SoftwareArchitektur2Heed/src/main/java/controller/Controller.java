@@ -26,7 +26,7 @@ import java.io.Serializable;
 
 @Named
 @RequestScoped
-public class Controller implements Serializable {
+public class Controller {
 	
 	private ReservationData resData= new ReservationData();
 	private EmployeeTO employeeData = new EmployeeTO();
