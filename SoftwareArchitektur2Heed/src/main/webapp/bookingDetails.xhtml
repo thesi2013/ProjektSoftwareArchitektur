@@ -50,13 +50,17 @@
                 <f:facet name="header">
                     <h:outputText value="Reserviert von:"/>
                 </f:facet>
-                <h:outputText value="#{bookingInfo.reserviertVon}"/>
+                <h:outputText value="#{bookingInfo.reserviertVon}">
+                	<f:convertDateTime pattern = "dd.MM.yyyy HH:mm"/>
+                </h:outputText>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Reserviert bis:"/>
                 </f:facet>
-                <h:outputText value="#{bookingInfo.reserviertBis}"/>
+                <h:outputText value="#{bookingInfo.reserviertBis}">
+                	<f:convertDateTime pattern = "dd.MM.yyyy HH:mm"/>
+                </h:outputText>
             </h:column>
             <h:column>
                 <f:facet name="header">

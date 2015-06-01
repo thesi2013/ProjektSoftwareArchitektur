@@ -22,3 +22,7 @@ body.bg {
 background-image: url(../img/bg.png);
 }
 
+table td, table th {
+	padding: 5px 10px;	
+}
+
