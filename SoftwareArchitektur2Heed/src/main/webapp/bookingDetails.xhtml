@@ -39,14 +39,14 @@
 			
 			<!-- TODO: Daten aus Datenbank ziehen -->
 			
-			<p:dataTable  id="test" var="bookingInfo" value="#{frontendManager.allReservations}" editable="true" style="margin-bottom:20px">
+			<p:dataTable  id="test" var="bookingInfo" value="#{controller.allReservations}" editable="true" style="margin-bottom:20px">
       			 <f:facet name="header">
            			Ihre Reservationen
        			</f:facet>
        			
        			
-       			<p:ajax event="rowEdit" listener="#{frontendManager.onRowEdit()}" />
-       			<!--  <p:ajax event="rowEditCancel" listener="#{frontendManager.onRowCancel()}" />-->
+       			<p:ajax event="rowEdit" listener="#{controller.onRowEdit()}" />
+       			<!--  <p:ajax event="rowEditCancel" listener="#{controller.onRowCancel()}" />-->
        			 
        			 
        		<p:column headerText="ID Reservation:">

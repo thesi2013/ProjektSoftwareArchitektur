@@ -37,8 +37,8 @@ public class Raum implements Serializable {
 	private String bezeichnung;
 	
 	
-	@OneToOne(mappedBy ="raum")
-	private Reservation reservation;
+	//@OneToOne(mappedBy ="raum")
+	//private Reservation reservation;
 
 
 	public int getIdRaum() {
