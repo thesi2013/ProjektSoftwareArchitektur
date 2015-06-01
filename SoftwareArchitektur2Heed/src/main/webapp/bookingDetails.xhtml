@@ -22,80 +22,61 @@
 </ul>
 </nav>
 
-	<h1>Buchung bearbeiten"</h1>
+	<div class="col-md-12">
+	<h1>Buchung bearbeiten</h1>
 	<br></br>
 	
-	<h:outputText value="Guten Tag, getVorname getNachname" />
-	<br></br>
-	<h:outputText value="Hier können Sie Ihre Reservationen verwalten." />
+	<h:outputText value="Guten Tag, hier können Sie Ihre Reservationen verwalten." />
 	<br></br>
 	<br></br>
 
 	<h:form id="form">
 
-					
-			
-			<!-- TODO: Daten aus Datenbank ziehen -->
-			
-			<p:dataTable  id="test" var="bookingInfo" value="#{controller.allReservations}" editable="true" style="margin-bottom:20px">
-      			 <f:facet name="header">
-           			Ihre Reservationen
-       			</f:facet>
-       			
-       			
-       			<p:ajax event="rowEdit" listener="#{controller.onRowEdit()}" />
-       			<!--  <p:ajax event="rowEditCancel" listener="#{controller.onRowCancel()}" />-->
-       			 
-       			 
-       		<p:column headerText="ID Reservation:">
-           			<p:cellEditor>
-               			<f:facet name="output"><h:outputText value="#{bookingInfo.idReservation}" /></f:facet>
-               			<f:facet name="input"><p:inputText id="modelInput" value="#{bookingInfo.idReservation}" style="width:100%"/></f:facet>
-           			</p:cellEditor>
-       		</p:column>
+			<h:form>
+        <h:dataTable value="#{controller.allReservations}" var="bookingInfo" binding="#{controller.reservationHtmlDataTable}">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ID Reservation:"></h:outputText>
+                </f:facet>
+                <h:outputText value="#{bookingInfo.idReservation}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ID Mitarbeiter:"/>
+                </f:facet>
+                <h:outputText value="#{bookingInfo.idMitarbeiter}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Reserviert von:"/>
+                </f:facet>
+                <h:outputText value="#{bookingInfo.reserviertVon}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Reserviert bis:"/>
+                </f:facet>
+                <h:outputText value="#{bookingInfo.reserviertBis}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Raumdetails: "/>
+                </f:facet>
+                <h:outputText value="#{bookingInfo.raum.bezeichnung}"/>
+            </h:column>
+            <h:column>
+                <h:commandButton value="Bearbeiten" immediate="true"></h:commandButton>
+            </h:column>
+            <h:column>
+                <h:commandButton value="Delete" action="#{controller.deleteReservation()}" immediate="true"></h:commandButton>
+            </h:column>
+        </h:dataTable>
+        </h:form>
        		
-       		<p:column headerText="ID Mitarbeiter:">
-           		<p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{bookingInfo.idMitarbeiter}" /></f:facet>
-               <f:facet name="input"><p:inputText value="#{bookingInfo.idMitarbeiter}" style="width:100%" label="Year"/></f:facet>
-           		</p:cellEditor>
-    		 </p:column>
-    		 
-    		 <p:column headerText="Reserviert von:">
-           		<p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{bookingInfo.reserviertVon}" /></f:facet>
-               <f:facet name="input"><p:inputText value="#{bookingInfo.reserviertVon}" style="width:100%" label="Year"/></f:facet>
-           		</p:cellEditor>
-    		 </p:column>
-    		 
-    		 <p:column headerText="Reserviert bis:">
-           		<p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{bookingInfo.reserviertBis}" /></f:facet>
-               <f:facet name="input"><p:inputText value="#{bookingInfo.reserviertBis}" style="width:100%" label="Year"/></f:facet>
-           		</p:cellEditor>
-    		 </p:column>
-    		 
-    		 <p:column headerText="Raumdetails:">
-           		<p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{bookingInfo.raum.bezeichnung}" /></f:facet>
-               <f:facet name="input"><p:inputText value="#{bookingInfo.raum.bezeichnung}" style="width:100%" label="Year"/></f:facet>
-           		</p:cellEditor>
-    		 </p:column>
-    		 
-    		 <p:column style="width:32px">
-           		<p:rowEditor />
-       		</p:column>
-       		       			 
-       		</p:dataTable>
-       		      		
-       		<p:contextMenu for="test" widgetVar="cMenu">   
-       			<p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
-       			<p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
-   			</p:contextMenu>
-		
-
+			<!-- TODO: Daten aus Datenbank ziehen -->
 	</h:form>
 
+</div>
 
 </h:body>
 </html>

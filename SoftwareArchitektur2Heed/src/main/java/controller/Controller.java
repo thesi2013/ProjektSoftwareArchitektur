@@ -11,6 +11,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.component.html.HtmlDataTable;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.RowEditEvent;
@@ -30,7 +31,9 @@ public class Controller {
 	
 	private ReservationData resData= new ReservationData();
 	private EmployeeTO employeeData = new EmployeeTO();
-	private Reservation reservationUpdate = new Reservation();
+	private Reservation reservation = new Reservation();
+	private HtmlDataTable reservationHtmlDataTable;
+	private List<Reservation> allReservations;
 
 	@EJB
 	Bean bean;
@@ -83,8 +86,29 @@ public class Controller {
 	}
 	
 	
+	
+	
 	//Added from Sven
 	
+	public Reservation getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
+	}
+
+	public HtmlDataTable getReservationHtmlDataTable() {
+		return reservationHtmlDataTable;
+	}
+
+	public void setReservationHtmlDataTable(HtmlDataTable reservationHtmlDataTable) {
+		this.reservationHtmlDataTable = reservationHtmlDataTable;
+	}
+
+
+
+    //Added from Sven
 	private static final ArrayList<ReservationData> orderList = new ArrayList<ReservationData>();
 	
 	public void onRowEdit(RowEditEvent event) {
@@ -97,6 +121,23 @@ public class Controller {
         FacesMessage msg = new FacesMessage("Item Cancelled");   
         FacesContext.getCurrentInstance().addMessage(null, msg); 
         orderList.remove((ReservationData) event.getObject());
+    }
+	
+	
+//    public String doEditBook()
+//    {
+//        book=bookEJB.updateBook(book);
+//        bookList = bookEJB.findBooks();
+//        return "listBooksCase";
+//    }
+    
+    public String deleteReservation()
+    {
+        this.reservation = (Reservation) this.reservationHtmlDataTable.getRowData();
+        bean.deleteReservation(reservation);
+        reservation=new Reservation();
+        allReservations = bean.loadAllReservations();
+        return "listReservation";
     }
 	
 }
