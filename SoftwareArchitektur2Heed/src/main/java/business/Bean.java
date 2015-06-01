@@ -134,7 +134,7 @@ public class Bean {
 		reservations =query.getResultList();
 		Iterator <Reservation> iter = reservations.iterator();
 		while (iter.hasNext()){
-			System.out.println (iter.next().getReserviertBis() + "Warum ist .0 fraction, obwohl in DB datetime(0) definiert?");
+			System.out.println (iter.next().getReserviertBis());
 		}
 		
 		
