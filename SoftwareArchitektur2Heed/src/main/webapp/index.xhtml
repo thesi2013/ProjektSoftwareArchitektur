@@ -4,17 +4,66 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+	<title>DocuBase AG - Neue Buchung erfassen</title>
+
 	<!-- CSS einbinden-->
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
 	<!-- Bootstrap einbinden -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	<!-- de locale einbinden -->	
+		<script type="text/javascript">
+          PrimeFaces.locales['de'] =
+          {
+               closeText: 'Schließen',
+               prevText: 'Zurück',
+               nextText: 'Weiter',
+               currentText: 'Start',
+               monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+               monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+               dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+               dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+               dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+               weekHeader: 'Woche',
+               firstDay: 1,
+               isRTL: false,
+               showMonthAfterYear: false,
+               yearSuffix: '',
+               timeOnlyTitle: 'Zeit wählen',
+               timeText: 'Zeit',
+               hourText: 'Stunde',
+               minuteText: 'Minute',
+               secondText: 'Sekunde',
+               currentText: 'Aktuelles Datum',
+               ampm: false,
+               month: 'Monat',
+               week: 'Woche',
+               day: 'Tag',
+               allDayText: 'Ganzer Tag'
+           };
+      </script>
 
 </h:head>
 <h:body>
+
+	<nav class="navbar navbar">
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="index.xhtml"><span
+					class="glyphicon glyphicon-plus-sign" aria-hidden="true">
+						Neue Buchung</span></a></li>
+			<li role="presentation"><a href="edit.xhtml"><span
+					class="glyphicon glyphicon-pencil" aria-hidden="true">
+						Buchung bearbeiten</span></a></li>
+			<li role="presentation"><a href="#"><span
+					class="glyphicon glyphicon-eye-open" aria-hidden="true">
+						Historie</span></a></li>
+			<li role="presentation"><a href="#"><span
+					class="glyphicon glyphicon-question-sign" aria-hidden="true">
+						Anleitung</span></a></li>
+		</ul>
+	</nav>
 
 
 	<div class="col-md-12">
@@ -34,10 +83,11 @@
 						readonlyInput="true" required="true" styleClass="dateTimeField"
 						locale="de" value="#{controller.resData.datumVon}" />
 				</div>
+			</div>
 				
 				<br />
-				<br />
-
+			
+			<div class="row">
 				<div class="col-md-2">
 					<p:outputLabel for="dateTo" value="Datum bis:" />
 				</div>
@@ -49,7 +99,6 @@
 				</div>
 			</div>
 
-			<br />
 			<br />
 			<br />
 
@@ -70,7 +119,6 @@
 				</div>
 			</div>
 
-			<br />
 			<br />
 			<br />
 
@@ -96,7 +144,6 @@
 			<br />
 			<br />
 
-<!-- Gebädue -->
 			<div class="row">
 				<div class="col-md-2">
 					<p:outputLabel for="gebaeude" value="Gebäude: " />

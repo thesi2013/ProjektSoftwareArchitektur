@@ -103,16 +103,14 @@ public class Bean {
 	
 	
 	
-	public void addReservation(int employeeId, Raum raum){
-		System.out.println("Zeit: ");
-		System.out.println(data.getDatumVon());
-		System.out.println(data.getDatumBis());
-		reservation.setIdMitarbeiter(employeeId);
-		reservation.setRaum(raum);
-		reservation.setReserviertBis(data.getDatumBis());
-		reservation.setReserviertVon(data.getDatumVon());
+	public void addReservation(ReservationData resData){
+		reservation.setIdMitarbeiter(resData.getEmployee().getId());
+//		reservation.setRaum();
+		reservation.setReserviertBis(resData.getDatumBis());
+		reservation.setReserviertVon(resData.getDatumVon());
+		
 		em.persist(reservation);
-		System.out.println("RMB - Reservation hinzugefügt");
+		System.out.println("Bean - in DB gespeichert.");
 	}
 	
 	public List<Reservation> loadAllReservations(){

@@ -35,36 +35,15 @@ public class Controller {
 	@EJB
 	Bean bean;
 	
-//	public String searchRooms(){
-//		System.out.println("FEM - searchRooms() aufgerufen");
-//		System.out.println("VON: " + resData.getDatumVon());
-//		System.out.println("BIS: " + resData.getDatumBis());
-//		bean.storeData(resData);
-//		System.out.println("FEM - searchRooms() beendet");
-//		return "available.xhtml";
-//		
-//	}
-	
-//	public List <Raum> getAvailableRooms(){
-//		System.out.println("FEM - getRaumGroesse() aufgerufen");
-//		resData.setRooms(bean.availableRooms());
-//		return resData.getRooms();
-//	}
-	
-//	public List<EmployeeTO> getCheckEmployeeName(){
-//		System.out.println("FEM - getCheckEmployeeName() aufgerufen");
-//		return bean.loadEmployeeName();
-//	}
-	
 	
 	public String store(){
-		System.out.println("Controller - store() aufgerufen");
-		System.out.println("Mitarbeiter " + resData.getEmployee().getId() + " ausgewählt.");
-		System.out.println("Nutzungskategorie " + resData.getNutzungskateID() + " ausgewählt.");
-		System.out.println("Datum von " + resData.getDatumVon());
-		System.out.println("Datum bis " + resData.getDatumBis());
-		System.out.println("Gebäude " + resData.getGebaeude().getIdGebaeude() + " ausgewählt");
-//		bean.addReservation(employeeData.getId(), resData.getIdentifyRoom());
+//		System.out.println("Controller - store() aufgerufen.");
+//		System.out.println("Mitarbeiter " + resData.getEmployee().getId() + " ausgewählt.");
+//		System.out.println("Nutzungskategorie " + resData.getNutzungskateID() + " ausgewählt.");
+//		System.out.println("Datum von " + resData.getDatumVon());
+//		System.out.println("Datum bis " + resData.getDatumBis());
+//		System.out.println("Gebäude " + resData.getGebaeude().getIdGebaeude() + " ausgewählt");
+		bean.addReservation(resData);
 		return "confirmation.xhtml";
 	}
 
@@ -75,10 +54,6 @@ public class Controller {
 		
 	}
 	
-	
-	 public String clearObject(){
-		 return "index.xhtml";
-	}
 	
 	
 	

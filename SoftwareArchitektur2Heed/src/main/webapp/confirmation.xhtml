@@ -4,13 +4,14 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+	<title>DocuBase AG - Buchung erfolgreich erfasst</title>
+
+	<!-- CSS einbinden-->
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	
+
 	<!-- Bootstrap einbinden -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </h:head>
 
@@ -27,7 +28,7 @@
 		<br></br>
 		<br></br>
 
-		<p:commandButton class="btn btn-primary" value="Zurück" action = "#{controller.clearObject()}"/>
+		<p:commandButton class="btn btn-primary" value="Zurück" onclick="window.location.href='index.xhtml'"/>
 </div>
 
 </h:body>

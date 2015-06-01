@@ -1,5 +1,6 @@
 package business;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,10 +33,7 @@ public class fetchEmployeesEJB {
 				
 				employees = response.getEntity();			
 				
-				Iterator <EmployeeTO> iter = employees.iterator();
-				while (iter.hasNext()){
-					System.out.println (iter.next());
-				}
+				System.out.println(Arrays.toString(employees.toArray()));
 				
 				
 				}
