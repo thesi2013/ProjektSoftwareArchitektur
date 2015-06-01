@@ -15,6 +15,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
 import org.jboss.resteasy.client.ClientRequest;
@@ -52,22 +53,34 @@ public class Bean {
 	}
 	
 	
-	public List<Raum> availableRooms(){
-		
-		TypedQuery<Raum> query = em.createQuery("SELECT r FROM entities.Raum r", Raum.class);
-		List <Raum> list =query.getResultList();
-		/*System.out.println(data.getRooms().get(0).getBezeichnung());
-		List<Raum> list = new LinkedList<Raum>();
-		Raum testraum = new Raum();
-		testraum.setBezeichnung("test");
-		Raum testraum2 = new Raum();
-		testraum2.setBezeichnung("test2");
-		list.add(testraum);
-		list.add(testraum2);
-		System.out.println("availableRooms() durchgeführt");*/
-		return list;
-		
-	}
+	//Methode availableRooms() angepasst, um einen Raum abzufragen und zuzuweisen (Sven)
+		public int availableRooms(ReservationData resData){
+			
+			System.out.println("Bean - availableRooms aufgerufen");
+			
+			TypedQuery<Raum> query = em.createQuery("SELECT r FROM entities.Raum r"
+	                + " WHERE (r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE reserviertVon > :startDate AND reserviertVon < :endDate) "
+	                + "AND r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE reserviertBis > :startDate AND reserviertBis < :endDate) "
+	                + "AND r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE :startDate > reserviertVon AND :startDate < reserviertBis) "
+	                + "AND r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE :endDate > reserviertVon AND :endDate < reserviertBis)) "
+	                + " AND r.nutzungskategorie = '" + resData.getNutzungskateID() + "' AND r.groesse = '" + resData.getRaumGroesse() +"' ORDER BY r.idRaum", Raum.class)
+	    .setParameter("startDate", resData.getDatumVon(), TemporalType.TIMESTAMP)
+	    .setParameter("endDate", resData.getDatumBis(), TemporalType.TIMESTAMP);
+			
+			List <Raum> list =query.getResultList();
+			int roomID = 0;
+			
+			if(list.isEmpty()){
+				System.out.println("kein Raum gefunden!");
+			}
+			else{
+				Raum room = list.get(0);
+				roomID = room.getIdRaum();
+			}
+			
+			return roomID;
+			
+		}
 	
 	
 //	public List<EmployeeTO> loadEmployeeName(){
@@ -103,15 +116,18 @@ public class Bean {
 	
 	
 	
-	public void addReservation(ReservationData resData){
-		reservation.setIdMitarbeiter(resData.getEmployee().getId());
-//		reservation.setRaum();
-		reservation.setReserviertBis(resData.getDatumBis());
-		reservation.setReserviertVon(resData.getDatumVon());
-		
-		em.persist(reservation);
-		System.out.println("Bean - in DB gespeichert.");
-	}
+		public void addReservation(ReservationData resData){
+			reservation.setIdMitarbeiter(resData.getEmployee().getId());
+			int roomID = availableRooms(resData);
+			System.out.println(roomID + " = TEST: Raum ID");
+			
+			//reservation.setRaum(resData.getRoomID());
+			reservation.setReserviertBis(resData.getDatumBis());
+			reservation.setReserviertVon(resData.getDatumVon());
+			
+			em.persist(reservation);
+			System.out.println("Bean - in DB gespeichert.");
+		}
 	
 	public List<Reservation> loadAllReservations(){
 		System.out.println("RMB -  loadAllReservations() aufgerufen");
