@@ -1,4 +1,4 @@
-package controller;
+package deprecated;
 
 
 import java.util.ArrayList;
@@ -16,7 +16,6 @@ import org.primefaces.event.RowEditEvent;
 
 import restfulService.EmployeeTO;
 import business.ReservationData;
-import business.ReservationManagerBean;
 import entities.Nutzungskategorie;
 import entities.Raum;
 import entities.Reservation;

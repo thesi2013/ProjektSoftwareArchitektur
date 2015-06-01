@@ -1,4 +1,4 @@
-package business;
+package deprecated;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,6 +22,7 @@ import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.jboss.resteasy.util.GenericType;
 
+import business.ReservationData;
 import restfulService.EmployeeTO;
 import entities.Raum;
 import entities.Reservation;
