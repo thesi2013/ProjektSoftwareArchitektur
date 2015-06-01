@@ -43,7 +43,6 @@ public class Controller {
 //		System.out.println("Datum von " + resData.getDatumVon());
 //		System.out.println("Datum bis " + resData.getDatumBis());
 //		System.out.println("Gebäude " + resData.getGebaeude().getIdGebaeude() + " ausgewählt");
-		bean.availableRooms(resData); //ResData an availableRooms übermitteln
 		bean.addReservation(resData);
 		return "confirmation.xhtml";
 	}

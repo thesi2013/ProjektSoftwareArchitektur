@@ -54,7 +54,7 @@ public class Bean {
 	
 	
 	//Methode availableRooms() angepasst, um einen Raum abzufragen und zuzuweisen (Sven)
-		public int availableRooms(ReservationData resData){
+		public List <Raum> availableRooms(ReservationData resData){
 			
 			System.out.println("Bean - availableRooms aufgerufen");
 			
@@ -68,17 +68,8 @@ public class Bean {
 	    .setParameter("endDate", resData.getDatumBis(), TemporalType.TIMESTAMP);
 			
 			List <Raum> list =query.getResultList();
-			int roomID = 0;
 			
-			if(list.isEmpty()){
-				System.out.println("kein Raum gefunden!");
-			}
-			else{
-				Raum room = list.get(0);
-				roomID = room.getIdRaum();
-			}
-			
-			return roomID;
+			return list;
 			
 		}
 	
@@ -118,15 +109,22 @@ public class Bean {
 	
 		public void addReservation(ReservationData resData){
 			reservation.setIdMitarbeiter(resData.getEmployee().getId());
-			int roomID = availableRooms(resData);
-			System.out.println(roomID + " = TEST: Raum ID");
-			
-			//reservation.setRaum(resData.getRoomID());
-			reservation.setReserviertBis(resData.getDatumBis());
-			reservation.setReserviertVon(resData.getDatumVon());
-			
-			em.persist(reservation);
-			System.out.println("Bean - in DB gespeichert.");
+			List <Raum> list = availableRooms(resData);
+			if(list.isEmpty()){
+				System.out.println("kein Raum gefunden!");
+				
+			}
+			else{
+				Raum room = list.get(0);
+				System.out.println( room.getIdRaum() + " = TEST: Raum ID");
+				reservation.setRaum(room);
+				reservation.setReserviertBis(resData.getDatumBis());
+				reservation.setReserviertVon(resData.getDatumVon());
+				
+				em.persist(reservation);
+				System.out.println("Bean - in DB gespeichert.");
+			}
+
 		}
 	
 	public List<Reservation> loadAllReservations(){
