@@ -94,7 +94,7 @@
            <p:cellEditor>
                <f:facet name="output">
                		<h:outputText value="#{bookingInfo.reserviertVon}">
-               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm"/>
+               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm" timeZone="GMT+2"/>
                		</h:outputText>
                </f:facet>
                <f:facet name="input">
@@ -109,7 +109,7 @@
            <p:cellEditor>
                <f:facet name="output">
                		<h:outputText value="#{bookingInfo.reserviertBis}">
-               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm"/>
+               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm" timeZone="GMT+2"/>
                		</h:outputText>
                </f:facet>
                <f:facet name="input">

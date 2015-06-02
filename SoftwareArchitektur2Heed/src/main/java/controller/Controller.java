@@ -34,11 +34,11 @@ public class Controller {
 
 	@EJB
 	Bean bean;
-	@PostConstruct
-	public void init() {
-		allReservations = bean.loadAllReservations();
-		System.out.println("INIT");
-	}
+//	@PostConstruct
+//	public void init() {
+//		allReservations = bean.loadAllReservations();
+//		System.out.println("INIT");
+//	}
 	
 	public String store(){
 //		System.out.println("Controller - store() aufgerufen.");
@@ -54,8 +54,8 @@ public class Controller {
 	public List<Reservation> getAllReservations(){
 		System.out.println("controller - getAllReservations() - aufgerufen");
 		
-//		return bean.loadAllReservations();
-		return allReservations;
+		return bean.loadAllReservations();
+//		return allReservations;
 	}
 	
 	
