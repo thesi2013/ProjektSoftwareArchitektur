@@ -128,7 +128,7 @@ public class Bean {
 		}
 	
 	public List<Reservation> loadAllReservations(){
-		System.out.println("RMB -  loadAllReservations() aufgerufen");
+		System.out.println("bean -  loadAllReservations() aufgerufen");
 		List<Reservation> reservations = new LinkedList<Reservation>();
 		TypedQuery<Reservation> query = em.createQuery("SELECT r FROM entities.Reservation r", Reservation.class);
 		reservations =query.getResultList();

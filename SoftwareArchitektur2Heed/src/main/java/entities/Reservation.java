@@ -1,10 +1,7 @@
 package entities;
 
 import java.io.Serializable;
-
-
 import java.util.Date;
-
 import javax.persistence.*;
 
 
@@ -74,7 +71,4 @@ public class Reservation implements Serializable {
 	public void setReserviertBis(Date reserviertBis) {
 		this.reserviertBis = reserviertBis;
 	}
-	
-	
-   
 }
