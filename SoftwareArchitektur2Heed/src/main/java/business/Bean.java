@@ -146,6 +146,10 @@ public class Bean {
 	 public void deleteReservation(Reservation reservation) {
 	        em.remove(em.merge(reservation));
 	    }
+	 
+	 public Reservation updateReservation(Reservation reservation) {
+	        return em.merge(reservation);
+	    }
 	
 	
 

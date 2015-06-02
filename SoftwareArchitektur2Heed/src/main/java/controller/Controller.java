@@ -112,9 +112,9 @@ public class Controller {
 	private static final ArrayList<ReservationData> orderList = new ArrayList<ReservationData>();
 	
 	public void onRowEdit(RowEditEvent event) {
-		Raum test1 = new Raum();
-		test1.setIdRaum(((Reservation) event.getObject()).getRaum().getIdRaum());
-        System.out.println(test1.getIdRaum());
+		Reservation reservation = new Reservation();
+		reservation.setIdRaum(((Reservation) event.getObject()).getRaum().getIdRaum());
+        System.out.println(reservation.getIdRaum());
     }
 	//Added from Sven
 	public void onRowCancel(RowEditEvent event) {  
@@ -124,12 +124,18 @@ public class Controller {
     }
 	
 	
-//    public String doEditBook()
-//    {
-//        book=bookEJB.updateBook(book);
-//        bookList = bookEJB.findBooks();
-//        return "listBooksCase";
-//    }
+	public String prepareEditReservation()
+    {
+        this.reservation = (Reservation) this.reservationHtmlDataTable.getRowData();
+        return "editReservation.xhtml";
+    }	
+	
+    public String editReservation()
+    {
+        reservation = bean.updateReservation(reservation);
+        allReservations = bean.loadAllReservations();
+        return "listReservation";
+    }
     
     public String deleteReservation()
     {

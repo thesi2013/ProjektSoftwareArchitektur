@@ -30,7 +30,7 @@ public class Reservation implements Serializable {
 	@Column(columnDefinition="TINYINT(8)")
 	private int idReservation;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "idRaum")
 	private Raum raum;
 	

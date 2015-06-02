@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>DocuBase AG - Buchungen bearbeiten</title>
+
+	<!-- CSS einbinden-->
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+
+	<!-- Bootstrap einbinden -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</h:head>
+
+<h:body class="bg">
+
+<nav class="navbar navbar">
+  <ul class="nav nav-tabs">
+  <li role="presentation"><a href="index.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
+  <li role="presentation" class="active"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
+  <li role="presentation"><a href="bookingDetails.xhtml"><span class="glyphicon glyphicon-trash" aria-hidden="true">Buchung löschen</span></a></li>
+</ul>
+</nav>
+
+	<div class="col-md-12">
+	<h1>Buchung bearbeiten</h1>
+	<br></br>
+	
+	<h:outputText value="Guten Tag, hier können Sie Ihre Reservationen bearbeiten." />
+	<br></br>
+	<br></br>
+
+	<h:form id="form">
+   <p:growl id="msgs" showDetail="true"/>
+ 
+   <p:dataTable id="reservationen" var="bookingInfo" value="#{controller.allReservations}" editable="true">
+       <f:facet name="header">
+           Ihre Reservationen
+       </f:facet>
+ 
+       <p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":form:msgs" />
+       <p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":form:msgs" />
+ 
+       <p:column headerText="Id">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{car.id}" /></f:facet>
+               <f:facet name="input"><p:inputText id="modelInput" value="#{car.id}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Year">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Brand">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{car.brand}" /></f:facet>
+               <f:facet name="input">
+                   <h:selectOneMenu value="#{car.brand}" style="width:100%">
+                       <f:selectItems value="#{dtEditView.brands}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+                   </h:selectOneMenu>
+               </f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Color">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{car.color}" /></f:facet>
+               <f:facet name="input">
+                   <h:selectOneMenu value="#{car.color}" style="width:100%">
+                       <f:selectItems value="#{dtEditView.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
+                   </h:selectOneMenu>
+               </f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column style="width:32px">
+           <p:rowEditor />
+       </p:column>
+   </p:dataTable>
+	</h:form>
+
+</div>
+
+</h:body>
+</html>

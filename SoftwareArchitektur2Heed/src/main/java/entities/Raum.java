@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -37,8 +38,8 @@ public class Raum implements Serializable {
 	private String bezeichnung;
 	
 	
-	//@OneToOne(mappedBy ="raum")
-	//private Reservation reservation;
+	@OneToMany(mappedBy ="raum")
+	private List<Reservation> reservations;
 
 
 	public int getIdRaum() {

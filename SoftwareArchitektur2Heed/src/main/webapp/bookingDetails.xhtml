@@ -4,7 +4,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>DocuBase AG - Buchungen bearbeiten</title>
+	<title>DocuBase AG - Buchungen löschen</title>
 
 	<!-- CSS einbinden-->
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -20,7 +20,8 @@
 <nav class="navbar navbar">
   <ul class="nav nav-tabs">
   <li role="presentation"><a href="index.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
-  <li role="presentation" class="active"><a href="bookingDetails.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
+  <li role="presentation"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
+  <li role="presentation" class="active"><a href="bookingDetails.xhtml"><span class="glyphicon glyphicon-trash" aria-hidden="true">Buchung löschen</span></a></li>
 </ul>
 </nav>
 
@@ -32,10 +33,9 @@
 	<br></br>
 	<br></br>
 
-	<h:form id="form">
+	<h:form id="details">
 
-			<h:form>
-        <h:dataTable value="#{controller.allReservations}" var="bookingInfo" binding="#{controller.reservationHtmlDataTable}">
+        <h:dataTable id="table_details" value="#{controller.allReservations}" editable="true" var="bookingInfo" binding="#{controller.reservationHtmlDataTable}">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="ID Reservation:"></h:outputText>
@@ -66,18 +66,17 @@
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Raumdetails: "/>
+                    <h:outputText value="Raumdetails: "/>  
                 </f:facet>
                 <h:outputText value="#{bookingInfo.raum.bezeichnung}"/>
             </h:column>
             <h:column>
-                <h:commandButton value="Bearbeiten" immediate="true"></h:commandButton>
+                <h:commandButton id="bearbeiten" value="Bearbeiten" action="#{controller.prepareEditReservation()}" immediate="true"></h:commandButton>
             </h:column>
             <h:column>
-                <h:commandButton value="Delete" action="#{controller.deleteReservation()}" immediate="true"></h:commandButton>
+                <h:commandButton id="loeschen" value="Löschen" action="#{controller.deleteReservation()}" immediate="true"></h:commandButton>
             </h:column>
         </h:dataTable>
-        </h:form>
        		
 			<!-- TODO: Daten aus Datenbank ziehen -->
 	</h:form>
