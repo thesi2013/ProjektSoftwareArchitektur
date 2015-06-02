@@ -14,6 +14,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.html.HtmlDataTable;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import restfulService.EmployeeTO;
@@ -112,16 +113,31 @@ public class Controller {
 	private static final ArrayList<ReservationData> orderList = new ArrayList<ReservationData>();
 	
 	public void onRowEdit(RowEditEvent event) {
+		
 		Reservation reservation = new Reservation();
-		reservation.setIdRaum(((Reservation) event.getObject()).getRaum().getIdRaum());
-        System.out.println(reservation.getIdRaum());
+		reservation = ((Controller) event.getObject()).getReservation();
+		
+		
+		
+        System.out.println(reservation.getRaum().getBezeichnung());
     }
-	//Added from Sven
-	public void onRowCancel(RowEditEvent event) {  
-        FacesMessage msg = new FacesMessage("Item Cancelled");   
-        FacesContext.getCurrentInstance().addMessage(null, msg); 
-        orderList.remove((ReservationData) event.getObject());
+	
+	public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
+	
+	public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+         
+        if(newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+	
+	
 	
 	
 	public String prepareEditReservation()

@@ -12,6 +12,38 @@
 	<!-- Bootstrap einbinden -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	<!-- de locale einbinden -->	
+		<script type="text/javascript">
+          PrimeFaces.locales['de'] =
+          {
+               closeText: 'Schließen',
+               prevText: 'Zurück',
+               nextText: 'Weiter',
+               currentText: 'Start',
+               monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+               monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+               dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+               dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+               dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+               weekHeader: 'Woche',
+               firstDay: 1,
+               isRTL: false,
+               showMonthAfterYear: false,
+               yearSuffix: '',
+               timeOnlyTitle: 'Zeit wählen',
+               timeText: 'Zeit',
+               hourText: 'Stunde',
+               minuteText: 'Minute',
+               secondText: 'Sekunde',
+               currentText: 'Aktuelles Datum',
+               ampm: false,
+               month: 'Monat',
+               week: 'Woche',
+               day: 'Tag',
+               allDayText: 'Ganzer Tag'
+           };
+      </script>
 
 </h:head>
 
@@ -36,47 +68,70 @@
 	<h:form id="form">
    <p:growl id="msgs" showDetail="true"/>
  
-   <p:dataTable id="reservationen" var="bookingInfo" value="#{controller.allReservations}" editable="true">
+   <p:dataTable var="bookingInfo" value="#{controller.allReservations}" editable="true">
        <f:facet name="header">
            Ihre Reservationen
        </f:facet>
  
-       <p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":form:msgs" />
-       <p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":form:msgs" />
+       <p:ajax event="rowEdit" listener="#{controller.onRowEdit()}" update=":form:msgs" />
+       <p:ajax event="rowEditCancel" listener="#{controller.onRowCancel()}"  update=":form:msgs" />
  
-       <p:column headerText="Id">
+       <p:column headerText="ID Reservation:">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{car.id}" /></f:facet>
-               <f:facet name="input"><p:inputText id="modelInput" value="#{car.id}" style="width:100%"/></f:facet>
+               <f:facet name="output"><h:outputText value="#{bookingInfo.idReservation}"/></f:facet>
+               <f:facet name="input"><p:inputText value="#{bookingInfo.idReservation}" disabled="true" style="width:100%"/></f:facet>
            </p:cellEditor>
        </p:column>
  
-       <p:column headerText="Year">
+       <p:column headerText="ID Mitarbeiter:">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
-               <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
+               <f:facet name="output"><h:outputText value="#{bookingInfo.idMitarbeiter}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{bookingInfo.idMitarbeiter}" disabled="true" style="width:100%"/></f:facet>
            </p:cellEditor>
        </p:column>
  
-       <p:column headerText="Brand">
+       <p:column headerText="Reserviert von:">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{car.brand}" /></f:facet>
+               <f:facet name="output">
+               		<h:outputText value="#{bookingInfo.reserviertVon}">
+               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm"/>
+               		</h:outputText>
+               </f:facet>
                <f:facet name="input">
-                   <h:selectOneMenu value="#{car.brand}" style="width:100%">
-                       <f:selectItems value="#{dtEditView.brands}" var="man" itemLabel="#{man}" itemValue="#{man}" />
-                   </h:selectOneMenu>
+                   <p:calendar value="#{bookingInfo.reserviertVon}" mindate="#{controller.minDate}" style="width:100%" pattern="dd.MM.yyyy HH:mm" locale="de">
+                       <f:selectItems value="#{bookingInfo.reserviertVon}" var="reserviertVon" />
+                   </p:calendar>
                </f:facet>
            </p:cellEditor>
        </p:column>
  
-       <p:column headerText="Color">
+       <p:column headerText="Reserviert bis:">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{car.color}" /></f:facet>
-               <f:facet name="input">
-                   <h:selectOneMenu value="#{car.color}" style="width:100%">
-                       <f:selectItems value="#{dtEditView.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
-                   </h:selectOneMenu>
+               <f:facet name="output">
+               		<h:outputText value="#{bookingInfo.reserviertBis}">
+               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm"/>
+               		</h:outputText>
                </f:facet>
+               <f:facet name="input">
+                   <p:calendar value="#{bookingInfo.reserviertBis}" mindate="#{controller.minDate}" style="width:100%" pattern="dd.MM.yyyy HH:mm" locale="de">
+                  		 <f:selectItems value="#{bookingInfo.reserviertBis}" var="reserviertBis" />
+                   </p:calendar>
+               </f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+       <p:column headerText="Raumbezeichnung:">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{bookingInfo.raum.bezeichnung}" /></f:facet>
+               <f:facet name="input">
+               		<p:selectOneMenu id="console" value="#{bookingInfo.raum.bezeichnung}" style="width:125px">
+            				<f:selectItem itemLabel="1-5 Personen" itemValue="1" />
+            				<f:selectItem itemLabel="5-10 Personen" itemValue="2" />
+            				<f:selectItem itemLabel="10-15 Personen" itemValue="3" />
+           					<f:selectItem itemLabel="15-20 Personen" itemValue="4" />
+           					<f:selectItem itemLabel="20+ Personen" itemValue="5"/>
+        			</p:selectOneMenu>
+               	</f:facet>
            </p:cellEditor>
        </p:column>
  
