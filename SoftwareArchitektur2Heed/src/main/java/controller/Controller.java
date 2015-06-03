@@ -115,11 +115,11 @@ public class Controller {
 	public void onRowEdit(RowEditEvent event) {
 		
 		Reservation reservation = new Reservation();
-		reservation = ((Controller) event.getObject()).getReservation();
-		
-		
-		
-        System.out.println(reservation.getRaum().getBezeichnung());
+		reservation = (Reservation)event.getObject();
+		System.out.println("RESERVIERT BIS: " + reservation.getReserviertBis());
+		bean.updateReservation(reservation);
+		FacesMessage msg = new FacesMessage("Reservation geändert");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 	
 	public void onRowCancel(RowEditEvent event) {
