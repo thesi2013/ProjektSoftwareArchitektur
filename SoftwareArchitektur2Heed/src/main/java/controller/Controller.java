@@ -110,16 +110,24 @@ public class Controller {
 
 
     //Added from Sven
-	private static final ArrayList<ReservationData> orderList = new ArrayList<ReservationData>();
 	
 	public void onRowEdit(RowEditEvent event) {
 		
-		Reservation reservation = new Reservation();
-		reservation = (Reservation)event.getObject();
-		System.out.println("RESERVIERT BIS: " + reservation.getReserviertBis());
-		bean.updateReservation(reservation);
+		
+//		reservation = (Reservation)event.getObject();
+		System.out.println("CR - onRowEdit aufgerufen" + resData.getDatumVon());
+		System.out.println("CR - onRowEdit aufgerufen" + resData.getDatumBis());
+//		System.out.println("Nutzungskategorie: " + reservation.getRaum().getNutzungskategorie().getIdNutzungskategorie());
+//		System.out.println("Raumgrösse: " + reservation.getRaum().getGroesse());
+		System.out.println("Nutzungskategorie: "+ resData.getNutzungskateID());
+		System.out.println("Raumbezeichnung: " + resData.getRaumGroesse());
+		
+		System.out.println("MITARBEITER ID: " + resData.getEmployee().getId());
+		
+		bean.updateReservation(resData);
 		FacesMessage msg = new FacesMessage("Reservation geändert");
         FacesContext.getCurrentInstance().addMessage(null, msg);
+
     }
 	
 	public void onRowCancel(RowEditEvent event) {
@@ -146,12 +154,12 @@ public class Controller {
         return "editReservation.xhtml";
     }	
 	
-    public String editReservation()
-    {
-        reservation = bean.updateReservation(reservation);
-        allReservations = bean.loadAllReservations();
-        return "listReservation";
-    }
+//    public String editReservation()
+//    {
+//        reservation = bean.updateReservation(reservation);
+//        allReservations = bean.loadAllReservations();
+//        return "listReservation";
+//    }
     
     public String deleteReservation()
     {

@@ -53,7 +53,7 @@
   <ul class="nav nav-tabs">
   <li role="presentation"><a href="index.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
   <li role="presentation" class="active"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
-  <li role="presentation"><a href="bookingDetails.xhtml"><span class="glyphicon glyphicon-trash" aria-hidden="true">Buchung löschen</span></a></li>
+  <li role="presentation"><a href="bookingDetails.xhtml"><span class="glyphicon glyphicon-trash" aria-hidden="true"> Buchung löschen</span></a></li>
 </ul>
 </nav>
 
@@ -79,14 +79,14 @@
        <p:column headerText="ID Reservation:">
            <p:cellEditor>
                <f:facet name="output"><h:outputText value="#{bookingInfo.idReservation}"/></f:facet>
-               <f:facet name="input"><p:inputText value="#{bookingInfo.idReservation}" disabled="true" style="width:100%"/></f:facet>
+               <f:facet name="input"><p:inputText value="#{controller.resData.idReservation}" disabled="true" style="width:100%"/></f:facet>
            </p:cellEditor>
        </p:column>
  
        <p:column headerText="ID Mitarbeiter:">
            <p:cellEditor>
                <f:facet name="output"><h:outputText value="#{bookingInfo.idMitarbeiter}" /></f:facet>
-               <f:facet name="input"><p:inputText value="#{bookingInfo.idMitarbeiter}" disabled="true" style="width:100%"/></f:facet>
+               <f:facet name="input"><p:inputText value="#{controller.resData.employee.id}" disabled="true" style="width:100%"/></f:facet>
            </p:cellEditor>
        </p:column>
  
@@ -98,8 +98,7 @@
                		</h:outputText>
                </f:facet>
                <f:facet name="input">
-                   <p:calendar value="#{bookingInfo.reserviertVon}" mindate="#{controller.minDate}" style="width:100%" pattern="dd.MM.yyyy HH:mm" locale="de">
-                       <f:selectItems value="#{bookingInfo.reserviertVon}" var="reserviertVon" />
+                   <p:calendar value="#{controller.resData.datumVon}" stepminute="15" mindate="#{controller.minDate}" style="width:100%" pattern="dd.MM.yyyy HH:mm" locale="de">
                    </p:calendar>
                </f:facet>
            </p:cellEditor>
@@ -113,10 +112,24 @@
                		</h:outputText>
                </f:facet>
                <f:facet name="input">
-                   <p:calendar value="#{bookingInfo.reserviertBis}" mindate="#{controller.minDate}" style="width:100%" pattern="dd.MM.yyyy HH:mm" locale="de">
-                  		 <f:selectItems value="#{bookingInfo.reserviertBis}" var="reserviertBis" />
+                   <p:calendar value="#{controller.resData.datumBis}" stepminute="15" mindate="#{controller.minDate}" style="width:100%" pattern="dd.MM.yyyy HH:mm" locale="de">
                    </p:calendar>
                </f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+        <p:column headerText="Nutzungskategorie: ">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{bookingInfo.raum.nutzungskategorie.bezeichnung}" /></f:facet>
+               <f:facet name="input">
+               		<p:selectOneMenu id="console1" value="#{controller.resData.nutzungskateID}" style="width:125px">
+            				<f:selectItem itemLabel="Sitzungszimmer" itemValue="1" />
+            				<f:selectItem itemLabel="Showroom" itemValue="2" />
+            				<f:selectItem itemLabel="Veranstaltungsräume" itemValue="3" />
+           					<f:selectItem itemLabel="Arbeitsräume" itemValue="4" />
+           					<f:selectItem itemLabel="Aula" itemValue="5"/>
+        			</p:selectOneMenu>
+               	</f:facet>
            </p:cellEditor>
        </p:column>
        
@@ -124,16 +137,17 @@
            <p:cellEditor>
                <f:facet name="output"><h:outputText value="#{bookingInfo.raum.groesse}" /></f:facet>
                <f:facet name="input">
-               		<p:selectOneMenu id="console" value="#{bookingInfo.raum.groesse}" style="width:125px">
-            				<f:selectItem itemLabel="1-5 Personen" itemValue="1" />
-            				<f:selectItem itemLabel="5-10 Personen" itemValue="2" />
-            				<f:selectItem itemLabel="10-15 Personen" itemValue="3" />
-           					<f:selectItem itemLabel="15-20 Personen" itemValue="4" />
-           					<f:selectItem itemLabel="20+ Personen" itemValue="5"/>
+               		<p:selectOneMenu id="console" value="#{controller.resData.raumGroesse}" style="width:125px">
+            				<f:selectItem itemLabel="1-5 Personen" itemValue="1-5 Personen" />
+            				<f:selectItem itemLabel="5-10 Personen" itemValue="5-10 Personen" />
+            				<f:selectItem itemLabel="10-15 Personen" itemValue="10-15 Personen" />
+           					<f:selectItem itemLabel="15-20 Personen" itemValue="15-20 Personen" />
+           					<f:selectItem itemLabel="20+ Personen" itemValue="20+ Personen"/>
         			</p:selectOneMenu>
                	</f:facet>
            </p:cellEditor>
        </p:column>
+       
  
        <p:column style="width:32px">
            <p:rowEditor />

@@ -72,6 +72,29 @@ public class Bean {
 			return list;
 			
 		}
+		
+		//Reservation UPDATE
+		
+//public List <Raum> updateRooms(ResData reservation){
+//			
+//			System.out.println("Bean - updateRooms aufgerufen");
+//			System.out.println("............. Nutzungskategorie: "+ reservation.getRaum().getNutzungskategorie().getIdNutzungskategorie());
+//			System.out.println("............. Grösse: "+ reservation.getRaum().getGroesse());
+//			
+//			TypedQuery<Raum> query = em.createQuery("SELECT r FROM entities.Raum r"
+//	                + " WHERE (r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE reserviertVon > :startDate AND reserviertVon < :endDate) "
+//	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE reserviertBis > :startDate AND reserviertBis < :endDate) "
+//	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE :startDate > reserviertVon AND :startDate < reserviertBis) "
+//	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE :endDate > reserviertVon AND :endDate < reserviertBis)) "
+//	                + " AND r.nutzungskategorie = '" + reservation.getRaum().getNutzungskategorie().getIdNutzungskategorie() + "' AND r.groesse = '" + reservation.getRaum().getGroesse() +"' ORDER BY r.idRaum", Raum.class)
+//	    .setParameter("startDate", reservation.getReserviertVon(), TemporalType.TIMESTAMP)
+//	    .setParameter("endDate", reservation.getReserviertBis(), TemporalType.TIMESTAMP);
+//			
+//			List <Raum> list =query.getResultList();
+//			
+//			return list;
+//			
+//		}
 	
 	
 //	public List<EmployeeTO> loadEmployeeName(){
@@ -147,8 +170,29 @@ public class Bean {
 	        em.remove(em.merge(reservation));
 	    }
 	 
-	 public Reservation updateReservation(Reservation reservation) {
-	        return em.merge(reservation);
+	 public void updateReservation(ReservationData resData) {
+		 System.out.println("update Reservation: " + resData.getEmployee().getId());
+		 	List <Raum> list = availableRooms(resData);
+			if(list.isEmpty()){
+				System.out.println("kein Raum gefunden!");
+			}
+			else{
+				Raum room = list.get(0);
+				System.out.println( room.getIdRaum() + " = TEST: Raum ID");
+				reservation.setRaum(room);
+				reservation.setReserviertBis(resData.getDatumBis());
+				reservation.setReserviertVon(resData.getDatumVon());
+				
+				em.merge(reservation);
+			}
+		 
+		 
+		 	
+//		 TypedQuery<Reservation> queryUpdate = em.createQuery("UPDATE entities.Reservation res SET res.raumgroesse = '" + reservation.getRaum().getGroesse() + "' WHERE res.idReservation = '" + reservation.getIdReservation() + "'", Reservation.class);
+//		 reservation = (Reservation) queryUpdate;
+//		 em.persist(reservation);
+		 
+//	        return reservation;
 	    }
 	
 	

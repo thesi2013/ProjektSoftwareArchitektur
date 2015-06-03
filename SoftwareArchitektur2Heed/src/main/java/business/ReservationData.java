@@ -14,6 +14,7 @@ public class ReservationData {
 	private Date datumBis;
 	private String raumGroesse;
 	private int nutzungskateID;
+	private int idReservation;
 	private Gebaeude gebaeude = new Gebaeude();
 	private List <Raum> rooms = new LinkedList <Raum>();
 	private Raum identifyRoom = new Raum();
@@ -86,6 +87,16 @@ public class ReservationData {
 	public void setIdentifyRoom(Raum identifyRoom) {
 		this.identifyRoom = identifyRoom;
 	}
+
+	public int getIdReservation() {
+		return idReservation;
+	}
+
+	public void setIdReservation(int idReservation) {
+		this.idReservation = idReservation;
+	}
+	
+	
 	
 	
 }

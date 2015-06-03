@@ -80,6 +80,16 @@ public class Raum implements Serializable {
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
+
+
+	public Nutzungskategorie getNutzungskategorie() {
+		return nutzungskategorie;
+	}
+
+
+	public void setNutzungskategorie(Nutzungskategorie nutzungskategorie) {
+		this.nutzungskategorie = nutzungskategorie;
+	}
 	
 	
    
