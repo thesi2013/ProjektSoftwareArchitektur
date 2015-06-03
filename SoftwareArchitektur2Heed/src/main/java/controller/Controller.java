@@ -35,6 +35,7 @@ public class Controller {
 	private Reservation reservation = new Reservation();
 	private HtmlDataTable reservationHtmlDataTable;
 	private List<Reservation> allReservations;
+	private Reservation bookingInfo = new Reservation();
 
 	@EJB
 	Bean bean;
@@ -115,6 +116,7 @@ public class Controller {
 		
 		
 //		reservation = (Reservation)event.getObject();
+		System.out.println("ReservationsID: " +resData.getIdReservation());
 		System.out.println("CR - onRowEdit aufgerufen" + resData.getDatumVon());
 		System.out.println("CR - onRowEdit aufgerufen" + resData.getDatumBis());
 //		System.out.println("Nutzungskategorie: " + reservation.getRaum().getNutzungskategorie().getIdNutzungskategorie());

@@ -79,14 +79,14 @@
        <p:column headerText="ID Reservation:">
            <p:cellEditor>
                <f:facet name="output"><h:outputText value="#{bookingInfo.idReservation}"/></f:facet>
-               <f:facet name="input"><p:inputText value="#{controller.resData.idReservation}" disabled="true" style="width:100%"/></f:facet>
+               <f:facet name="input"><p:inputText value="#{bookingInfo.idReservation}" disabled="true" style="width:100%"/></f:facet>
            </p:cellEditor>
        </p:column>
  
        <p:column headerText="ID Mitarbeiter:">
            <p:cellEditor>
                <f:facet name="output"><h:outputText value="#{bookingInfo.idMitarbeiter}" /></f:facet>
-               <f:facet name="input"><p:inputText value="#{controller.resData.employee.id}" disabled="true" style="width:100%"/></f:facet>
+               <f:facet name="input"><p:inputText value="#{bookingInfo.idMitarbeiter}" disabled="true" style="width:100%"/></f:facet>
            </p:cellEditor>
        </p:column>
  
