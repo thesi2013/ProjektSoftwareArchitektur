@@ -1,18 +1,16 @@
 package controller;
 
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.html.HtmlDataTable;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
@@ -20,11 +18,7 @@ import org.primefaces.event.RowEditEvent;
 import restfulService.EmployeeTO;
 import business.Bean;
 import business.ReservationData;
-import entities.Nutzungskategorie;
-import entities.Raum;
 import entities.Reservation;
-
-import java.io.Serializable;
 
 @Named
 @RequestScoped
@@ -35,7 +29,6 @@ public class Controller {
 	private Reservation reservation = new Reservation();
 	private HtmlDataTable reservationHtmlDataTable;
 	private List<Reservation> allReservations;
-	private Reservation bookingInfo = new Reservation();
 
 	@EJB
 	Bean bean;
@@ -116,15 +109,14 @@ public class Controller {
 		
 		
 //		reservation = (Reservation)event.getObject();
-		System.out.println("ReservationsID: " +resData.getIdReservation());
-		System.out.println("CR - onRowEdit aufgerufen" + resData.getDatumVon());
-		System.out.println("CR - onRowEdit aufgerufen" + resData.getDatumBis());
+//		System.out.println("ReservationsID: " +resData.getIdReservation());
+//		System.out.println("CR - onRowEdit aufgerufen" + resData.getDatumVon());
+//		System.out.println("CR - onRowEdit aufgerufen" + resData.getDatumBis());
 //		System.out.println("Nutzungskategorie: " + reservation.getRaum().getNutzungskategorie().getIdNutzungskategorie());
 //		System.out.println("Raumgrösse: " + reservation.getRaum().getGroesse());
-		System.out.println("Nutzungskategorie: "+ resData.getNutzungskateID());
-		System.out.println("Raumbezeichnung: " + resData.getRaumGroesse());
-		
-		System.out.println("MITARBEITER ID: " + resData.getEmployee().getId());
+//		System.out.println("Nutzungskategorie: "+ resData.getNutzungskateID());
+//		System.out.println("Raumbezeichnung: " + resData.getRaumGroesse());
+//		System.out.println("MITARBEITER ID: " + resData.getEmployee().getId());
 		
 		bean.updateReservation(resData);
 		FacesMessage msg = new FacesMessage("Reservation geändert");
@@ -163,6 +155,8 @@ public class Controller {
 //        return "listReservation";
 //    }
     
+	
+	//According to Andreas Martin, many thanks!
     public String deleteReservation()
     {
         this.reservation = (Reservation) this.reservationHtmlDataTable.getRowData();

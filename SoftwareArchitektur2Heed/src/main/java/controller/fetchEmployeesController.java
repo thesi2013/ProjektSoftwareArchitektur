@@ -30,5 +30,4 @@ public class fetchEmployeesController {
 	public void setEmployeData(EmployeeTO employeData) {
 		this.employeeData = employeData;
 	}
-
 }

@@ -95,8 +95,4 @@ public class ReservationData {
 	public void setIdReservation(int idReservation) {
 		this.idReservation = idReservation;
 	}
-	
-	
-	
-	
 }

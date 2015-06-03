@@ -87,9 +87,4 @@ public class Gebaeude implements Serializable {
 	public void setOrt(String ort) {
 		this.ort = ort;
 	}
-	
-	
-	
-	
-	
 }

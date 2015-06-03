@@ -20,16 +20,18 @@
 <nav class="navbar navbar">
   <ul class="nav nav-tabs">
   <li role="presentation"><a href="index.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
-  <li role="presentation"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
+  <!-- <li role="presentation"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li> -->
   <li role="presentation" class="active"><a href="bookingDetails.xhtml"><span class="glyphicon glyphicon-trash" aria-hidden="true">Buchung löschen</span></a></li>
 </ul>
 </nav>
 
 	<div class="col-md-12">
-	<h1>Buchung bearbeiten</h1>
+	<h1>Buchung löschen</h1>
 	<br></br>
 	
-	<h:outputText value="Guten Tag, hier können Sie Ihre Reservationen verwalten." />
+	<h:outputText value="Guten Tag, hier können Sie Ihre Buchung löschen. Falls Sie Ihre Buchung bearbeiten wollen, löschen Sie die alte Buchung und erfassen Sie eine Neue." />
+	<br></br>
+	<br></br>
 	<br></br>
 	<br></br>
 
@@ -66,6 +68,18 @@
             </h:column>
             <h:column>
                 <f:facet name="header">
+                    <h:outputText value="Gebäude: "/>  
+                </f:facet>
+                <h:outputText value="#{bookingInfo.raum.gebaeude.name}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Raumgrösse: "/>  
+                </f:facet>
+                <h:outputText value="#{bookingInfo.raum.groesse}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
                     <h:outputText value="Raumdetails: "/>  
                 </f:facet>
                 <h:outputText value="#{bookingInfo.raum.bezeichnung}"/>
@@ -74,11 +88,7 @@
                 <h:commandButton id="loeschen" value="Löschen" action="#{controller.deleteReservation()}" immediate="true"></h:commandButton>
             </h:column>
         </h:dataTable>
-       		
-			<!-- TODO: Daten aus Datenbank ziehen -->
 	</h:form>
-
 </div>
-
 </h:body>
 </html>

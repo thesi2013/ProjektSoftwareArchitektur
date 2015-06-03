@@ -74,7 +74,4 @@ public class Reservation implements Serializable {
 	public void setReserviertBis(Date reserviertBis) {
 		this.reserviertBis = reserviertBis;
 	}
-	
-	
-   
 }

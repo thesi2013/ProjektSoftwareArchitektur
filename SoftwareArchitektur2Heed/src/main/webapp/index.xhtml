@@ -51,7 +51,7 @@
 	<nav class="navbar navbar">
 		<ul class="nav nav-tabs">
 			<li role="presentation" class="active"><a href="index.xhtml"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"> Neue Buchung</span></a></li>
-  			<li role="presentation"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li>
+  			<!-- <li role="presentation"><a href="edit.xhtml"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Buchung bearbeiten</span></a></li> -->
   			<li role="presentation"><a href="bookingDetails.xhtml"><span class="glyphicon glyphicon-trash" aria-hidden="true"> Buchung löschen</span></a></li>
 		</ul>
 	</nav>
@@ -107,6 +107,14 @@
 						<f:selectItem itemLabel="Arbeitsräume" itemValue="4" />
 						<f:selectItem itemLabel="Aula" itemValue="5" />
 					</p:selectOneListbox>
+				</div>
+				<div class="col-md-4 col-md-offset-1">
+				<h:outputText value="*Info zu Raumgrössen:" /><br/>
+				<h:outputText value="Sitzungszimmer: 1-5 Personen" /><br/>
+				<h:outputText value="Showroom: 15-20 Personen" /><br/>
+				<h:outputText value="Veranstaltungsraum: 10-15 Personen" /><br/>
+				<h:outputText value="Arbeitsraum: 5-10 Personen" /><br/>
+				<h:outputText value="Aula: 20+ Personen" />
 				</div>
 			</div>
 
@@ -164,6 +172,15 @@
 					itemLabel="#{employee.firstname} #{employee.lastname}"/>
 			</p:selectOneListbox>
 			</div>
+				<div class="col-md-4 col-md-offset-1">
+				<h:outputText value="*Mitarbeiter ID:" /><br/>
+				<h:outputText value="6 --> Hans Dampf" /><br/>
+				<h:outputText value="7 --> Maria Poll" /><br/>
+				<h:outputText value="8 --> Paul Faul" /><br/>
+				<h:outputText value="9 --> Mara Hara" /><br/>
+				<h:outputText value="10 --> Song Su" /><br/>
+				<h:outputText value="11 --> Melvin Kelvin" />
+				</div>
 			</div>
 
 			<br />

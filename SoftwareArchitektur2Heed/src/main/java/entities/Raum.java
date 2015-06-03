@@ -90,7 +90,4 @@ public class Raum implements Serializable {
 	public void setNutzungskategorie(Nutzungskategorie nutzungskategorie) {
 		this.nutzungskategorie = nutzungskategorie;
 	}
-	
-	
-   
 }
