@@ -50,7 +50,7 @@ public class Bean {
 	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE reserviertBis > :startDate AND reserviertBis < :endDate) "
 	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE :startDate > reserviertVon AND :startDate < reserviertBis) "
 	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE :endDate > reserviertVon AND :endDate < reserviertBis)) "
-	                + " AND r.nutzungskategorie = '" + resData.getNutzungskateID() + "' AND r.groesse = '" + resData.getRaumGroesse() + "' ORDER BY r.idRaum", Raum.class)
+	                + " AND r.nutzungskategorie = '" + resData.getNutzungskateID() + "' AND r.groesse = '" + resData.getRaumGroesse() +"' AND r.gebaeude = '" + resData.getGebaeude().getIdGebaeude() + "' ORDER BY r.idRaum", Raum.class)
 	    .setParameter("startDate", resData.getDatumVon(), TemporalType.TIMESTAMP)
 	    .setParameter("endDate", resData.getDatumBis(), TemporalType.TIMESTAMP);
 			
