@@ -40,7 +40,7 @@ public class fetchEmployeesEJB {
 				catch (Exception e) {
 					e.printStackTrace();
 				}
-			System.out.println ("fetchEmployeesEJB - Mitarbeiter geladen");
+			System.out.println ("Mitarbeiter geladen");
 			return employees;			
 		}
 

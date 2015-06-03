@@ -28,7 +28,7 @@ public class Bean {
 	private Reservation reservation = new Reservation();
 	
 	public void storeData(ReservationData resData){
-		System.out.println("RMB - storeData() aufgerufen!");
+//		System.out.println("RMB - storeData() aufgerufen!");
 		data.setRaumGroesse(resData.getRaumGroesse());
 		data.setDatumVon(resData.getDatumVon());
 		data.setDatumBis(resData.getDatumBis());
@@ -50,7 +50,7 @@ public class Bean {
 	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE reserviertBis > :startDate AND reserviertBis < :endDate) "
 	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE :startDate > reserviertVon AND :startDate < reserviertBis) "
 	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE :endDate > reserviertVon AND :endDate < reserviertBis)) "
-	                + " AND r.nutzungskategorie = '" + resData.getNutzungskateID() + "' AND r.groesse = '" + resData.getRaumGroesse() +"' ORDER BY r.idRaum", Raum.class)
+	                + " AND r.nutzungskategorie = '" + resData.getNutzungskateID() + "' AND r.groesse = '" + resData.getRaumGroesse() + "' ORDER BY r.idRaum", Raum.class)
 	    .setParameter("startDate", resData.getDatumVon(), TemporalType.TIMESTAMP)
 	    .setParameter("endDate", resData.getDatumBis(), TemporalType.TIMESTAMP);
 			
@@ -70,19 +70,19 @@ public class Bean {
 			}
 			else{
 				Raum room = list.get(0);
-				System.out.println( room.getIdRaum() + " = TEST: Raum ID");
+//				System.out.println( room.getIdRaum() + " = TEST: Raum ID");
 				reservation.setRaum(room);
 				reservation.setReserviertBis(resData.getDatumBis());
 				reservation.setReserviertVon(resData.getDatumVon());
 				
 				em.persist(reservation);
-				System.out.println("Bean - in DB gespeichert.");
+//				System.out.println("Bean - in DB gespeichert.");
 			}
 
 		}
 	
 	public List<Reservation> loadAllReservations(){
-		System.out.println("RMB -  loadAllReservations() aufgerufen");
+//		System.out.println("RMB -  loadAllReservations() aufgerufen");
 		List<Reservation> reservations = new LinkedList<Reservation>();
 		TypedQuery<Reservation> query = em.createQuery("SELECT r FROM entities.Reservation r", Reservation.class);
 		reservations =query.getResultList();
@@ -103,14 +103,14 @@ public class Bean {
 	 
 	//Reservation UPDATE --> Daten werden korrekt erfasst, jedoch wird ein neuer Eintrag erstellt
 	 public void updateReservation(ReservationData resData) {
-		 System.out.println("update Reservation: " + resData.getEmployee().getId());
+//		 System.out.println("update Reservation: " + resData.getEmployee().getId());
 		 	List <Raum> list = availableRooms(resData);
 			if(list.isEmpty()){
 				System.out.println("kein Raum gefunden!");
 			}
 			else{
 				Raum room = list.get(0);
-				System.out.println( room.getIdRaum() + " = TEST: Raum ID");
+//				System.out.println( room.getIdRaum() + " = TEST: Raum ID");
 				reservation.setRaum(room);
 				reservation.setReserviertBis(resData.getDatumBis());
 				reservation.setReserviertVon(resData.getDatumVon());

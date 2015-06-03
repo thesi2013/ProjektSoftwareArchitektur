@@ -46,7 +46,7 @@ public class Controller {
 	}
 
 	public List<Reservation> getAllReservations(){
-		System.out.println("FEM - getAllReservations() - aufgerufen");
+//		System.out.println("FEM - getAllReservations() - aufgerufen");
 		
 		return bean.loadAllReservations();
 		

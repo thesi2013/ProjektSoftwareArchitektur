@@ -19,7 +19,7 @@ public class fetchEmployeesController {
 
 
 	public List<EmployeeTO> getCheckEmployeeName(){
-		System.out.println("fetchEmployeesController - getCheckEmployeeName() aufgerufen");
+//		System.out.println("fetchEmployeesController - getCheckEmployeeName() aufgerufen");
 		return fetchEmployeesEJB.loadEmployeeName();
 	}
 	
