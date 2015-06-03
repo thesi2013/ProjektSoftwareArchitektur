@@ -71,9 +71,6 @@
                 <h:outputText value="#{bookingInfo.raum.bezeichnung}"/>
             </h:column>
             <h:column>
-                <h:commandButton id="bearbeiten" value="Bearbeiten" action="#{controller.prepareEditReservation()}" immediate="true"></h:commandButton>
-            </h:column>
-            <h:column>
                 <h:commandButton id="loeschen" value="Löschen" action="#{controller.deleteReservation()}" immediate="true"></h:commandButton>
             </h:column>
         </h:dataTable>
