@@ -59,10 +59,10 @@ public class Bean {
 			System.out.println("Bean - availableRooms aufgerufen");
 			
 			TypedQuery<Raum> query = em.createQuery("SELECT r FROM entities.Raum r"
-	                + " WHERE (r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE reserviertVon > :startDate AND reserviertVon < :endDate) "
-	                + "AND r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE reserviertBis > :startDate AND reserviertBis < :endDate) "
-	                + "AND r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE :startDate > reserviertVon AND :startDate < reserviertBis) "
-	                + "AND r.idRaum NOT IN ( SELECT res FROM entities.Reservation res WHERE :endDate > reserviertVon AND :endDate < reserviertBis)) "
+	                + " WHERE (r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE reserviertVon > :startDate AND reserviertVon < :endDate) "
+	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE reserviertBis > :startDate AND reserviertBis < :endDate) "
+	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE :startDate > reserviertVon AND :startDate < reserviertBis) "
+	                + "AND r.idRaum NOT IN ( SELECT raum FROM entities.Reservation res WHERE :endDate > reserviertVon AND :endDate < reserviertBis)) "
 	                + " AND r.nutzungskategorie = '" + resData.getNutzungskateID() + "' AND r.groesse = '" + resData.getRaumGroesse() +"' ORDER BY r.idRaum", Raum.class)
 	    .setParameter("startDate", resData.getDatumVon(), TemporalType.TIMESTAMP)
 	    .setParameter("endDate", resData.getDatumBis(), TemporalType.TIMESTAMP);
