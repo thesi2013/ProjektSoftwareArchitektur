@@ -6,13 +6,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.inject.Named;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlDataTable;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
@@ -20,7 +20,11 @@ import org.primefaces.event.RowEditEvent;
 import restfulService.EmployeeTO;
 import business.Bean;
 import business.ReservationData;
+import entities.Nutzungskategorie;
+import entities.Raum;
 import entities.Reservation;
+
+import java.io.Serializable;
 
 @Named
 @RequestScoped
@@ -34,11 +38,7 @@ public class Controller {
 
 	@EJB
 	Bean bean;
-//	@PostConstruct
-//	public void init() {
-//		allReservations = bean.loadAllReservations();
-//		System.out.println("INIT");
-//	}
+	
 	
 	public String store(){
 //		System.out.println("Controller - store() aufgerufen.");
@@ -52,10 +52,10 @@ public class Controller {
 	}
 
 	public List<Reservation> getAllReservations(){
-		System.out.println("controller - getAllReservations() - aufgerufen");
+		System.out.println("FEM - getAllReservations() - aufgerufen");
 		
 		return bean.loadAllReservations();
-//		return allReservations;
+		
 	}
 	
 	
@@ -113,12 +113,10 @@ public class Controller {
 	private static final ArrayList<ReservationData> orderList = new ArrayList<ReservationData>();
 	
 	public void onRowEdit(RowEditEvent event) {
+		
 		Reservation reservation = new Reservation();
-		reservation = (Reservation)event.getObject();
-		System.out.println("RESERVIERT BIS: " + reservation.getReserviertBis());
-		bean.updateReservation(reservation);
-		FacesMessage msg = new FacesMessage("Reservation geändert");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+		reservation = ((Controller) event.getObject()).getReservation();
+		
 		
 		
         System.out.println(reservation.getRaum().getBezeichnung());

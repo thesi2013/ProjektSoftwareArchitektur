@@ -73,8 +73,8 @@
            Ihre Reservationen
        </f:facet>
  
-       <p:ajax event="rowEdit" listener="#{controller.onRowEdit}" update=":form:msgs" />
-       <p:ajax event="rowEditCancel" listener="#{controller.onRowCancel}"  update=":form:msgs" />
+       <p:ajax event="rowEdit" listener="#{controller.onRowEdit()}" update=":form:msgs" />
+       <p:ajax event="rowEditCancel" listener="#{controller.onRowCancel()}"  update=":form:msgs" />
  
        <p:column headerText="ID Reservation:">
            <p:cellEditor>
@@ -94,7 +94,7 @@
            <p:cellEditor>
                <f:facet name="output">
                		<h:outputText value="#{bookingInfo.reserviertVon}">
-               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm" timeZone="GMT+2"/>
+               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm"/>
                		</h:outputText>
                </f:facet>
                <f:facet name="input">
@@ -109,7 +109,7 @@
            <p:cellEditor>
                <f:facet name="output">
                		<h:outputText value="#{bookingInfo.reserviertBis}">
-               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm" timeZone="GMT+2"/>
+               			<f:convertDateTime pattern = "dd.MM.yyyy HH:mm"/>
                		</h:outputText>
                </f:facet>
                <f:facet name="input">
@@ -120,11 +120,11 @@
            </p:cellEditor>
        </p:column>
        
-       <p:column headerText="Raumbgrösse:">
+       <p:column headerText="Raumbezeichnung:">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{bookingInfo.raum.groesse}" /></f:facet>
+               <f:facet name="output"><h:outputText value="#{bookingInfo.raum.bezeichnung}" /></f:facet>
                <f:facet name="input">
-               		<p:selectOneMenu id="console" value="#{bookingInfo.raum.groesse}" style="width:125px">
+               		<p:selectOneMenu id="console" value="#{bookingInfo.raum.bezeichnung}" style="width:125px">
             				<f:selectItem itemLabel="1-5 Personen" itemValue="1" />
             				<f:selectItem itemLabel="5-10 Personen" itemValue="2" />
             				<f:selectItem itemLabel="10-15 Personen" itemValue="3" />
