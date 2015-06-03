@@ -1,10 +1,6 @@
 package restfulService;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
-@JsonIgnoreProperties ("pathToImage")
 public class EmployeeTO{
 	
 	private int id;
